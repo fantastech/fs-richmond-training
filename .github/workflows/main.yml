@@ -1,7 +1,7 @@
 name: Main
 
 env:
-  themePath: 'wp-content/themes/child-theme'
+  themePath: 'wp-content/themes/richmond-training'
 
 on:
   push:
