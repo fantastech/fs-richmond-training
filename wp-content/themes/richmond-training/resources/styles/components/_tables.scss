@@ -1,0 +1,23 @@
+table,
+td,
+th {
+  border-width: $table-border-width $table-border-style $table-border-color;
+}
+
+table {
+  border-width: $table-border-width 0 0 $table-border-width;
+  border-collapse: $table-border-collapse;
+  border-spacing: $table-border-spacing;
+  margin-bottom: $table-margin-bottom;
+  width: 100%;
+}
+
+td,
+th {
+  padding: $table-td-padding;
+  border-width: 0 $table-border-width $table-border-width 0;
+}
+
+th {
+  font-weight: $table-th-font-weight;
+}

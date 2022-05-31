@@ -1,0 +1,53 @@
+/**
+ * Links
+ */
+a,
+.ast-single-post .entry-content a {
+  outline: $link-outline;
+
+  &:hover {
+    outline: $link-hover-outline;
+  }
+
+  &:focus {
+    outline: $link-focus-outline;
+  }
+}
+
+/**
+ * Button
+ */
+button {
+  &:hover {
+    outline: $button-hover-outline;
+  }
+
+  &:focus {
+    outline: $button-focus-outline;
+  }
+}
+
+/**
+ * Paragraph
+ */
+// TODO: remove this because it hides/avoids a problem.
+p:empty {
+  display: none;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/**
+ * Lists
+ */
+ul {
+  list-style: $ul-list-style;
+  margin: $ul-margin;
+}
+
+ol {
+  list-style: $ol-list-style;
+  margin: $ol-margin;
+}

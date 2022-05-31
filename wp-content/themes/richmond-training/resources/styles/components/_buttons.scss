@@ -1,0 +1,40 @@
+.button,
+.button-primary,
+.menu-toggle,
+.ast-button,
+.ast-custom-button,
+input#submit,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  outline: $button-outline;
+  display: $button-display;
+  box-shadow: $button-box-shadow;
+  text-decoration: $button-text-decoration;
+
+  &:hover {
+    outline: $button-hover-outline;
+    text-decoration: $button-hover-text-decoration;
+  }
+
+  &:focus {
+    outline: $button-focus-outline;
+    text-decoration: $button-focus-text-decoration;
+  }
+}
+
+.button {
+  &.button-secondary {
+    @include button-variant(
+      $button-secondary-color,
+      $button-secondary-bg-color,
+      $button-secondary-border-color,
+      $button-secondary-hover-color,
+      $button-secondary-hover-bg-color,
+      $button-secondary-hover-border-color,
+      $button-secondary-focus-color,
+      $button-secondary-focus-bg-color,
+      $button-secondary-focus-border-color,
+    );
+  }
+}

@@ -1,0 +1,105 @@
+/**
+ * Breakpoints
+ */
+$breakpoints: (
+  mobile-sm: 576px,
+  mobile: 767px,
+  tablet: 992px,
+  tablet-lg: 1024px,
+  desktop: 1280px,
+  desktop-lg: 1440px,
+  dekstop-xl: 1920px,
+);
+
+/**
+ * Font Families
+ */
+$font-primary: 'Primary Font Name', serif;
+$font-secondary: 'Secondary Font Name', serif;
+$font-icon: "Font Awesome 5 Free", serif;
+
+/**
+ * Colours
+ */
+$white: #fff;
+$black: #000;
+$grey-light: #eee;
+$grey-dark: #3a3a3a;
+$blue: #0170b9;
+$primary: $blue;
+$secondary: $grey-dark;
+
+/**
+ * Links
+ */
+$link-outline: none;
+$link-hover-outline: $link-outline;
+$link-focus-outline: 1px solid;
+$link-text-decoration: none;
+$link-hover-text-decoration: underline;
+$link-focus-text-decoration: $link-hover-text-decoration;
+$link-font-weight: normal;
+$link-hover-font-weight: $link-font-weight;
+$link-focus-font-weight: $link-font-weight;
+
+/**
+ * Primary Button. Manage rest of the styling from Customizer
+ */
+$button-outline: $link-outline;
+$button-hover-outline: $button-outline;
+$button-focus-outline: $button-outline;
+$button-display: inline-block;
+$button-box-shadow: $button-outline;
+$button-text-decoration: $link-text-decoration;
+$button-hover-text-decoration: none;
+$button-focus-text-decoration: $button-hover-text-decoration;
+
+/**
+ * Secondary Button
+ */
+$button-secondary-color: $white;
+$button-secondary-hover-color: $secondary;
+$button-secondary-focus-color: $button-secondary-hover-color;
+$button-secondary-bg-color: $secondary;
+$button-secondary-hover-bg-color: $button-secondary-color;
+$button-secondary-focus-bg-color: $button-secondary-hover-bg-color;
+$button-secondary-border-color: $secondary;
+$button-secondary-hover-border-color: $secondary;
+$button-secondary-focus-border-color: $secondary;
+
+/**
+ * Forms
+ */
+$form-field-color: $black;
+$form-field-focus-color: $black;
+$form-field-placeholder-color: $black;
+$form-field-bg-color: transparent;
+$form-field-focus-bg-color: transparent;
+$form-field-border-size: 1px;
+$form-field-border-style: solid;
+$form-field-border-color: $grey-dark;
+$form-field-box-shadow: none;
+$form-field-margin-bottom: 20px;
+$form-field-border-radius: 5px;
+$form-field-padding: 0.75rem;
+
+/**
+ * Tables
+ */
+$table-border-width: 1px;
+$table-border-style: solid;
+$table-border-color: rgba(0, 0, 0, 0.1);
+$table-margin-bottom: 20px;
+$table-border-collapse: separate;
+$table-border-spacing: 0;
+$table-td-padding: 8px;
+$table-th-padding: $table-td-padding;
+$table-th-font-weight: 700;
+
+/**
+ * List Style
+ */
+$ul-list-style: disc;
+$ul-margin: 0 0 1.5em 3em;
+$ol-list-style: decimal;
+$ol-margin: $ul-margin;
