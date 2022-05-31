@@ -1,1 +1,14 @@
 /* Todo */
+
+footer {
+  .site-primary-footer-wrap {
+    .widget-title {
+      color: $white;
+    }
+
+    .textwidget {
+      color: $white;
+      opacity: 0.8;
+    }
+  }
+}

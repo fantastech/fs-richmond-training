@@ -117,7 +117,7 @@ function fs_get_bb_button_presets()
     $button_presets = [];
     $default_border_settings = [
         'style' => 'solid',
-        'color' => 'cccccc',
+        'color' => '282e6a',
         'width' => [
             'top' => '1',
             'right' => '1',
@@ -125,10 +125,10 @@ function fs_get_bb_button_presets()
             'left' => '1',
         ],
         'radius' => [
-            'top_left' => '5',
-            'top_right' => '5',
-            'bottom_left' => '5',
-            'bottom_right' => '5',
+            'top_left' => '0',
+            'top_right' => '0',
+            'bottom_left' => '0',
+            'bottom_right' => '0',
         ],
         'shadow' => [
             'color' => '',
@@ -140,42 +140,42 @@ function fs_get_bb_button_presets()
     ];
     $default_typography_settings = [
         'font_size' => [
-            'length' => '16',
+            'length' => '12',
             'unit' => 'px',
         ],
         'line_height' => [
-            'length' => '20',
+            'length' => '12',
             'unit' => 'px',
         ],
-        'font_weight' => '400',
-        'text_align' => 'left',
+        'font_weight' => '600',
+        'text_align' => 'center',
         'text_decoration' => 'none',
         'font_family' => 'Default'
     ];
     $default_settings = [
-        'bg_color' => 'eeeeee',
-        'bg_hover_color' => 'cccccc',
-        'text_color' => '000000',
-        'text_hover_color' => '000000',
+        'bg_color' => '282e6a',
+        'bg_hover_color' => '282e6a',
+        'text_color' => 'ffffff',
+        'text_hover_color' => 'ffffff',
         'padding_top' => '10',
-        'padding_top_medium' => '10',
-        'padding_top_responsive' => '10',
-        'padding_right' => '20',
-        'padding_right_medium' => '20',
-        'padding_right_responsive' => '20',
-        'padding_bottom' => '10',
-        'padding_bottom_medium' => '10',
-        'padding_bottom_responsive' => '10',
-        'padding_left' => '20',
-        'padding_left_medium' => '20',
-        'padding_left_responsive' => '20',
+        'padding_top_medium' => '25',
+        'padding_top_responsive' => '25',
+        'padding_right' => '2',
+        'padding_right_medium' => '2',
+        'padding_right_responsive' => '2',
+        'padding_bottom' => '25',
+        'padding_bottom_medium' => '25',
+        'padding_bottom_responsive' => '25',
+        'padding_left' => '2',
+        'padding_left_medium' => '2',
+        'padding_left_responsive' => '2',
         'typography' => $default_typography_settings,
         'typography_medium' => $default_typography_settings,
         'typography_responsive' => $default_typography_settings,
         'border' => $default_border_settings,
         'border_medium' => $default_border_settings,
         'border_responsive' => $default_border_settings,
-        'border_hover_color' => '808080',
+        'border_hover_color' => '282e6a',
     ];
 
     $button_presets['primary'] = [
@@ -188,12 +188,12 @@ function fs_get_bb_button_presets()
         'name' => 'Secondary',
         'class' => 'button-secondary',
         'settings' => fs_wp_parse_args_recursive([
-            'bg_color' => '000000',
-            'bg_hover_color' => 'ffffff',
+            'bg_color' => '1e9dda',
+            'bg_hover_color' => '1e9dda',
             'text_color' => 'ffffff',
-            'text_hover_color' => '000000',
+            'text_hover_color' => 'ffffff',
             'border' => [
-                'color' => '000000',
+                'color' => '1e9dda',
             ],
         ], $default_settings),
     ];

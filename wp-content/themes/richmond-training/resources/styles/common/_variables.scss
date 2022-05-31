@@ -14,8 +14,8 @@ $breakpoints: (
 /**
  * Font Families
  */
-$font-primary: 'Primary Font Name', serif;
-$font-secondary: 'Secondary Font Name', serif;
+$font-primary: 'Playfair Display', serif;
+$font-secondary: 'Montserrat',sans-serif;
 $font-icon: "Font Awesome 5 Free", serif;
 
 /**
@@ -25,8 +25,10 @@ $white: #fff;
 $black: #000;
 $grey-light: #eee;
 $grey-dark: #3a3a3a;
-$blue: #0170b9;
-$primary: $blue;
+$dark-blue:#282e6a;
+$blue: #1e9dda;
+$light-blue:#f0f9fd;
+$primary: $dark-blue;
 $secondary: $grey-dark;
 
 /**
@@ -58,14 +60,14 @@ $button-focus-text-decoration: $button-hover-text-decoration;
  * Secondary Button
  */
 $button-secondary-color: $white;
-$button-secondary-hover-color: $secondary;
+$button-secondary-hover-color: $white;
 $button-secondary-focus-color: $button-secondary-hover-color;
-$button-secondary-bg-color: $secondary;
-$button-secondary-hover-bg-color: $button-secondary-color;
+$button-secondary-bg-color: $blue;
+$button-secondary-hover-bg-color: $button-secondary-bg-color;
 $button-secondary-focus-bg-color: $button-secondary-hover-bg-color;
-$button-secondary-border-color: $secondary;
-$button-secondary-hover-border-color: $secondary;
-$button-secondary-focus-border-color: $secondary;
+$button-secondary-border-color: $blue;
+$button-secondary-hover-border-color: $blue;
+$button-secondary-focus-border-color: $blue;
 
 /**
  * Forms
@@ -100,6 +102,6 @@ $table-th-font-weight: 700;
  * List Style
  */
 $ul-list-style: disc;
-$ul-margin: 0 0 1.5em 3em;
+$ul-margin: 0 0 0 20px;
 $ol-list-style: decimal;
 $ol-margin: $ul-margin;
