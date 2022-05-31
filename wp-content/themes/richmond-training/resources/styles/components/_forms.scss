@@ -1,0 +1,89 @@
+::placeholder {
+  color: $form-field-placeholder-color;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="date"],
+input[type="month"],
+textarea {
+  -webkit-appearance: none;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="reset"],
+input[type="tel"],
+input[type="date"],
+input[type="month"],
+select,
+textarea {
+  color: $form-field-color;
+  padding: $form-field-padding;
+  height: auto;
+  border-width: $form-field-border-size;
+  border-style: $form-field-border-style;
+  border-color: $form-field-border-color;
+  border-radius: $form-field-border-radius;
+  background: $form-field-bg-color;
+  box-shadow: $form-field-box-shadow;
+  box-sizing: border-box;
+  transition: all 0.2s linear;
+
+  &:focus {
+    background: $form-field-focus-bg-color;
+    color: $form-field-focus-color;
+  }
+}
+
+.gform_wrapper {
+  .gfield {
+    margin-bottom: $form-field-margin-bottom;
+
+    input:not([type="checkbox"]):not([type="radio"]),
+    select,
+    textarea {
+      background: $form-field-bg-color;
+      border-radius: $form-field-border-radius;
+      height: auto;
+      width: 100%;
+      padding: $form-field-padding;
+
+      &:focus {
+        background: $form-field-focus-bg-color;
+        color: $form-field-focus-color;
+      }
+    }
+  }
+
+  .ginput_complex {
+    display: flex;
+    justify-content: space-between;
+
+    > span {
+      display: inline-block;
+    }
+
+    // TODO: Rewrite using flexbox.
+    &.ginput_container_address {
+      display: block;
+
+      .ginput_full {
+        width: 100%;
+      }
+
+      .ginput_left,
+      .ginput_right {
+        width: 50%;
+      }
+    }
+  }
+}
