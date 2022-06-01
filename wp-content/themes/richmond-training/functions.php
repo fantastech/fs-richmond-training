@@ -13,7 +13,7 @@ if (! defined('ABSPATH')) {
 define('FS_THEME_VERSION', '2.1');
 define('FS_DEV_MODE', true);
 define('FS_THEME_USE_FONT_AWESOME', false); // Enable this only if BB plugin is active.
-define('FS_THEME_USE_CUSTOM_JS', false); // This will enqueue script.js file.
+define('FS_THEME_USE_CUSTOM_JS', true); // This will enqueue script.js file.
 
 /**
 * Include core functions
