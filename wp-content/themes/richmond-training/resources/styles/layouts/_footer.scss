@@ -117,16 +117,16 @@ footer {
 
         .wp-block-post-excerpt__excerpt {
           margin-bottom: 68px;
+        }
 
-          .read-more {
-            margin-bottom: -60px;
+        .read-more {
+          margin-bottom: -90px;
 
-            a {
-              background-color: $blue;
-              padding: 25px 2px 23px 2px;
-              width: 100%;
-              text-align: center;
-            }
+          a {
+            background-color: $blue;
+            padding: 25px 2px 23px 2px;
+            width: 100%;
+            text-align: center;
           }
         }
       }
