@@ -273,33 +273,33 @@ function fs_get_background_class_names()
 //      }
 // });
 
-add_shortcode('show_course_field', function () {
-     ob_start();
-     $video = get_field('_bean_course_video_html');
-     $price = get_field('_bean_course_price');
-     ?>
-     <div class="cards-container">
-             <?php
+// add_shortcode('show_course_field', function () {
+//      ob_start();
+//      $video = get_field('_bean_course_video_html');
+//      $price = get_field('_bean_course_price');
+//      ?>
+//      <div class="cards-container">
+//              <?php
     
-             $args = array(
-                 'post_status'=>'publish',
-                 'post_type'=>array(course::POSTTYPE),
-                 'posts_per_page'=> 10,
-                 'orderby'=>'modified',
-                 'order'=>'ASC',   
-             );
+//              $args = array(
+//                  'post_status'=>'publish',
+//                  'post_type'=>array(course::POSTTYPE),
+//                  'posts_per_page'=> 10,
+//                  'orderby'=>'modified',
+//                  'order'=>'ASC',   
+//              );
 
-             $the_query = new WP_Query( $args ); ?>
-             <?php if ( $the_query->have_posts() ) : ?>
-                 <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+//              $the_query = new WP_Query( $args ); ?>
+//              <?php if ( $the_query->have_posts() ) : ?>
+//                  <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                     
-                   <?php $post_id = get_the_ID(); ?>
-                    <p class="address"><?php echo  $price; ?></p>  
-                 <?php endwhile; ?>
-                 <?php wp_reset_postdata(); ?>
-             <?php endif; ?>                
-     </div>
-     <?php 
-     $html = ob_get_clean();
-     return $html;
-});
+//                    <?php $post_id = get_the_ID(); ?>
+//                     <p class="address"><?php echo  $price; ?></p>  
+//                  <?php endwhile; ?>
+//                  <?php wp_reset_postdata(); ?>
+//              <?php endif; ?>                
+//      </div>
+//      <?php 
+//      $html = ob_get_clean();
+//      return $html;
+// });
