@@ -111,16 +111,29 @@ footer {
           padding-right: 30px !important;
         }
 
+        .wp-block-post-title {
+          margin-top: 30px;
+        }
+
         .wp-block-post-featured-image {
           margin-top: -70px;
+
+          img {
+            height: 240px;
+            object-fit: cover;
+          }
         }
 
         .wp-block-post-excerpt__excerpt {
-          margin-bottom: 68px;
+          margin-bottom: 30px;
+        }
+
+        .wp-block-post-excerpt__more-link {
+          display: none;
         }
 
         .read-more {
-          margin-bottom: -90px;
+          margin-bottom: -60px;
 
           a {
             background-color: $blue;
