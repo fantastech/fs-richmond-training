@@ -9,6 +9,9 @@ footer {
       font-weight: 600;
       font-family: $font-secondary;
       margin-bottom: 30px;
+      @include media-down(tablet) {
+        text-align: left;
+      }
     }
 
     .textwidget {
@@ -17,6 +20,9 @@ footer {
       font-size: 14px;
       font-weight: 500;
       line-height: 24px;
+      @include media-down(tablet) {
+        text-align: left;
+      }
 
       p {
         margin-bottom: 0;
@@ -28,12 +34,18 @@ footer {
         ul {
           display: flex;
           flex-wrap: wrap;
+          @include media-down(tablet) {
+            flex-direction: column;
+          }
 
           li {
             margin-bottom: 5px;
             display: flex;
             flex-direction: column;
             width: 30%;
+            @include media-down(tablet) {
+              width: 100%;
+            }
 
             a {
               color: $white;
@@ -65,7 +77,64 @@ footer {
   }
 }
 
+.footer-widget-area[data-section="sidebar-widgets-footer-widget-2"].footer-widget-area-inner {
+  text-align: left;
+}
+
 .ast-mobile-popup-inner .ast-desktop-popup-content .header-widget-area img {
   width: 492px;
   margin-top: 120px;
+}
+
+.astra-advanced-hook-2967 {
+  .top-content {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    h2 {
+      margin-bottom: 30px;
+    }
+
+    p {
+      margin-bottom: 70px;
+    }
+  }
+
+  .wp-block-post-template {
+    margin-left: 0;
+
+    .wp-block-post {
+      margin-bottom: 150px;
+
+      .footer-blog {
+        padding-left: 60px !important;
+        padding-right: 60px !important;
+        @include media-down(tablet) {
+          padding-left: 30px !important;
+          padding-right: 30px !important;
+        }
+
+        .wp-block-post-featured-image {
+          margin-top: -70px;
+        }
+
+        .wp-block-post-excerpt__excerpt {
+          margin-bottom: 68px;
+        }
+
+        .wp-block-columns {
+          .read-more {
+            margin-bottom: -60px;
+
+            a {
+              background-color: $blue;
+              padding: 25px 2px 23px 2px;
+              width: 100%;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
 }

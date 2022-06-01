@@ -2,8 +2,13 @@
 .ast-builder-menu-mobile {
   .main-navigation {
     .menu-item {
+      &:not(.sub-menu li) {
+        border-left: 3px solid #1e9dda;
+        margin-bottom: 22px;
+      }
+
       .ast-menu-toggle {
-        line-height: 2 !important;
+        line-height: 1 !important;
         outline: 0;
       }
     }
@@ -14,6 +19,32 @@
           color: $blue;
         }
       }
+    }
+  }
+}
+
+.ast-mobile-popup-content {
+  .ast-icon svg {
+    margin-top: 0 !important;
+  }
+}
+
+.ast-mobile-popup-drawer {
+  .ast-mobile-popup-overlay {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+  }
+}
+
+.ast-desktop-popup-content,
+.ast-header-break-point {
+  .sub-menu {
+    .menu-link > .icon-arrow:first-of-type,
+    .menu-item:not(.menu-item-has-children) .menu-link .icon-arrow:first-of-type {
+      display: none !important;
+    }
+
+    .menu-item .sub-menu .menu-link {
+      padding-left: 70px !important;
     }
   }
 }
