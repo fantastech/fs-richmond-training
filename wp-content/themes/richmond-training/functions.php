@@ -198,6 +198,34 @@ function fs_get_bb_button_presets()
         ], $default_settings),
     ];
 
+    $button_presets['tertiary'] = [
+        'name' => 'Tertiary',
+        'class' => 'button-tertiary',
+        'settings' => fs_wp_parse_args_recursive([
+            'bg_color' => 'ffffff',
+            'bg_hover_color' => 'ffffff',
+            'text_color' => '282e6a',
+            'text_hover_color' => '282e6a',
+            'border' => [
+                'color' => 'ffffff',
+            ],
+        ], $default_settings),
+    ];
+
+    $button_presets['transparent'] = [
+        'name' => 'Transparent',
+        'class' => 'button-transparent',
+        'settings' => fs_wp_parse_args_recursive([
+            'bg_color' => 'rgba(255,0,0,0)',
+            'bg_hover_color' => 'rgba(255,0,0,0)',
+            'text_color' => 'ffffff',
+            'text_hover_color' => 'ffffff',
+            'border' => [
+                'color' => 'ffffff',
+            ],
+        ], $default_settings),
+    ];
+
     return $button_presets;
 }
 
@@ -235,3 +263,4 @@ function fs_get_background_class_names()
         'bg-white' => 'White',
     ];
 }
+
