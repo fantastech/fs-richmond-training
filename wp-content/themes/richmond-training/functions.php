@@ -12,7 +12,7 @@ if (! defined('ABSPATH')) {
 */
 define('FS_THEME_VERSION', '2.1');
 define('FS_DEV_MODE', true);
-define('FS_THEME_USE_FONT_AWESOME', false); // Enable this only if BB plugin is active.
+define('FS_THEME_USE_FONT_AWESOME', true); // Enable this only if BB plugin is active.
 define('FS_THEME_USE_CUSTOM_JS', true); // This will enqueue script.js file.
 
 /**
@@ -272,3 +272,63 @@ function fs_get_background_class_names()
 //         print_r ($price);
 //      }
 // });
+
+add_shortcode('show_course_field', function () {
+    ob_start();
+    $video = get_field('_bean_course_video_html');
+    $price = get_field('_bean_course_price');
+    $button = get_field('_bean_course_button');
+    ?>
+    <div class="sidebar-container">
+            <?php
+    
+            $args = array(
+                'post_status'=>'publish',
+                'post_type'=>'course',
+                'posts_per_page'=> 3,
+                'orderby'=>'modified',
+                'order'=>'DSC',   
+            );
+            $post_id = get_the_ID(); 
+            $tags = get_the_terms($post_id,'courses_category');
+            
+            if(is_single() && 'course' == get_post_type() ){
+                if(has_post_thumbnail()) {
+                    $image = get_the_post_thumbnail_url();
+                }
+                else{
+                    $image = get_template_directory_uri().'/assets/images/default.svg';
+                } 
+            ?>
+                <div class="course-meta">
+                    <div class="masonry-project course-price-meta">
+                        <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
+                        <?php if (!is_wp_error($tags) && !empty($tags)){
+                            foreach($tags as $tag){?>
+                                <div class="category">
+                                    <p>CATEGORY</p>
+                                    <h3 class="category-name"><?php echo $tag->name; ?></h3>
+                                </div>
+                            <?php }
+                        }?>
+                        <div class="price">
+                            <p>PRICE</p>
+                            <h3 class="course-price"> £ <?php echo esc_html( $price ); ?></h3>
+                        </div>
+                        <div class="single-page-button">
+                            <button class="button-blue"><a href="<?php echo $button ?>" target="_blank" >BUY COURSE NOW</a> </button>
+                            <button class="button-transparent"> <a href="https://videotilehost.com/richmondtraining/freeTrial.php" target="_blank">REGISTER FOR A FREE TRIAL</a></button>
+                            <button class="button-transparent"> <a href="https://videotilehost.com/richmondtraining/" target="_blank">CANDIDATE LOGIN</a></button>
+                        </div>
+                        
+                    </div>
+                </div>
+            <?php }
+
+            ?>
+            
+    </div>
+    <?php 
+    $html = ob_get_clean();
+    return $html;
+});

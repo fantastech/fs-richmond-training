@@ -38,3 +38,59 @@ input[type="reset"] {
     );
   }
 }
+
+.button-dark-blue {
+  background-color: $dark-blue;
+  width: 100%;
+  line-height: 1;
+  padding: 21px 2px;
+  border: 1px solid $dark-blue;
+
+  &:hover,
+  &:focus {
+    background-color: $dark-blue;
+  }
+
+  a {
+    color: $white !important;
+    font-size: 12px;
+  }
+}
+
+.button-blue {
+  background-color: $blue;
+  margin-bottom: 30px;
+  width: 100%;
+  line-height: 1;
+  padding: 21px 2px;
+  border: 1px solid $blue;
+
+  &:hover,
+  &:focus {
+    background-color: $blue;
+  }
+
+  a {
+    color: $white !important;
+    font-size: 12px;
+  }
+}
+
+.button-transparent {
+  background-color: transparent;
+  margin-bottom: 30px;
+  border: 1px solid $dark-blue;
+  width: 100%;
+  line-height: 1;
+  padding: 21px 2px;
+
+  &:hover,
+  &:focus {
+    background-color: unset;
+  }
+
+  a {
+    color: $dark-blue !important;
+    font-size: 12px;
+  }
+}

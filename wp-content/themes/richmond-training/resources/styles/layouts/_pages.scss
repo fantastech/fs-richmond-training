@@ -1,1 +1,47 @@
 /* Pages CSS */
+
+.ast-right-sidebar {
+  #primary {
+    border-right: 0;
+  }
+
+  #secondary {
+    border-left: 0 !important;
+    padding-left: 0 !important;
+
+    .sidebar-main {
+      .sidebar-container {
+        .course-meta {
+          img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+          }
+
+          .category {
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+            p {
+              margin-bottom: 0;
+              line-height: 0;
+              font-size: 12px;
+              font-weight: 700;
+            }
+          }
+
+          .price {
+            margin-bottom: 30px;
+
+            p {
+              margin-bottom: 0;
+              line-height: 0;
+              font-size: 12px;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+}
