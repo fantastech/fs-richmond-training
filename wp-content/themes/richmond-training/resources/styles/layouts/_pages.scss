@@ -45,3 +45,31 @@
     }
   }
 }
+
+.two-column-row {
+  margin-top: 60px;
+  margin-bottom: 60px !important;
+
+  .wp-block-cover {
+    @include media-down(mobile) {
+      padding: 30px !important;
+    }
+
+    .wp-block-cover__inner-container {
+      .wp-block-column {
+        margin-bottom: 30px;
+
+        .wp-block-button {
+          @include media-down(mobile) {
+            width: calc(50% + 20px);
+          }
+        }
+
+        h3 {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
