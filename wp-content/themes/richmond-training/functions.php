@@ -12,7 +12,7 @@ if (! defined('ABSPATH')) {
 */
 define('FS_THEME_VERSION', '2.1');
 define('FS_DEV_MODE', true);
-define('FS_THEME_USE_FONT_AWESOME', true); // Enable this only if BB plugin is active.
+define('FS_THEME_USE_FONT_AWESOME', false); // Enable this only if BB plugin is active.
 define('FS_THEME_USE_CUSTOM_JS', true); // This will enqueue script.js file.
 
 /**
@@ -315,10 +315,14 @@ add_shortcode('show_course_field', function () {
                             <p>PRICE</p>
                             <h3 class="course-price"> £ <?php echo esc_html( $price ); ?></h3>
                         </div>
-                        <div class="single-page-button">
-                            <button class="button-blue"><a href="<?php echo $button ?>" target="_blank" >BUY COURSE NOW</a> </button>
-                            <button class="button-transparent"> <a href="https://videotilehost.com/richmondtraining/freeTrial.php" target="_blank">REGISTER FOR A FREE TRIAL</a></button>
-                            <button class="button-transparent"> <a href="https://videotilehost.com/richmondtraining/" target="_blank">CANDIDATE LOGIN</a></button>
+                        <div class="wp-block-button button-blue">
+                            <a href="<?php echo $button ?>" target="_blank" class="wp-block-button__link">BUY COURSE NOW</a>
+                        </div>
+                         <div class="wp-block-button button-transparent">
+                            <a href="https://videotilehost.com/richmondtraining/freeTrial.php" target="_blank" class="wp-block-button__link">REGISTER FOR A FREE TRIAL</a>
+                        </div>
+                         <div class="wp-block-button button-transparent">
+                            <a href="https://videotilehost.com/richmondtraining/" target="_blank" class="wp-block-button__link">CANDIDATE LOGIN</a>
                         </div>
                         
                     </div>

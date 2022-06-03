@@ -88,6 +88,11 @@ footer {
 
 .astra-advanced-hook-2967 {
   .top-content {
+    @include media-down(mobile) {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
     h2 {
       margin-bottom: 30px;
     }
@@ -99,47 +104,50 @@ footer {
 
   .wp-block-post-template {
     margin-left: 0;
+    margin-bottom: 150px;
 
-    .wp-block-post {
-      margin-bottom: 150px;
+    &.footer-blog {
+      gap: 3.6em !important;
+      @include media-down(tablet) {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+      }
 
-      .footer-blog {
-        padding-left: 60px !important;
-        padding-right: 60px !important;
+      li {
+        width: calc(33.33333% - 2.4em) !important;
         @include media-down(tablet) {
-          padding-left: 30px !important;
-          padding-right: 30px !important;
+          width: 100% !important;
         }
+      }
 
-        .wp-block-post-title {
-          margin-top: 30px;
+      .wp-block-post-title {
+        margin-top: 30px;
+      }
+
+      .wp-block-post-featured-image {
+        margin-top: -70px;
+
+        img {
+          height: 240px;
+          object-fit: cover;
         }
+      }
 
-        .wp-block-post-featured-image {
-          margin-top: -70px;
+      .wp-block-post-excerpt__excerpt {
+        margin-bottom: 30px;
+      }
 
-          img {
-            height: 240px;
-            object-fit: cover;
-          }
-        }
+      .wp-block-post-excerpt__more-link {
+        display: none;
+      }
 
-        .wp-block-post-excerpt__excerpt {
-          margin-bottom: 30px;
-        }
+      .read-more {
+        margin-bottom: -60px;
 
-        .wp-block-post-excerpt__more-link {
-          display: none;
-        }
-
-        .read-more {
-          margin-bottom: -60px;
-
-          a {
-            background-color: $blue;
-            width: 100%;
-            text-align: center;
-          }
+        a {
+          background-color: $blue;
+          width: 100%;
+          text-align: center;
         }
       }
     }
