@@ -88,9 +88,9 @@ footer {
 
 .astra-advanced-hook-2967 {
   .top-content {
-    @include media-down(mobile) {
-      padding-left: 30px;
-      padding-right: 30px;
+    @include media-down(tablet) {
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     h2 {
@@ -109,45 +109,57 @@ footer {
     &.footer-blog {
       gap: 3.6em !important;
       @include media-down(tablet) {
-        padding-left: 30px !important;
-        padding-right: 30px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        gap: 1em !important;
       }
 
       li {
         width: calc(33.33333% - 2.4em) !important;
         @include media-down(tablet) {
+          width: calc(33.33333% - 0.8em) !important;
+        }
+        @include media-down(mobile) {
           width: 100% !important;
+          margin-bottom: 100px;
         }
-      }
 
-      .wp-block-post-title {
-        margin-top: 30px;
-      }
+        .blog-column {
+          @include media-down(tablet) {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
 
-      .wp-block-post-featured-image {
-        margin-top: -70px;
+          .wp-block-post-title {
+            margin-top: 30px;
+          }
 
-        img {
-          height: 240px;
-          object-fit: cover;
-        }
-      }
+          .wp-block-post-featured-image {
+            margin-top: -70px;
 
-      .wp-block-post-excerpt__excerpt {
-        margin-bottom: 30px;
-      }
+            img {
+              height: 240px;
+              object-fit: cover;
+            }
+          }
 
-      .wp-block-post-excerpt__more-link {
-        display: none;
-      }
+          .wp-block-post-excerpt__excerpt {
+            margin-bottom: 30px;
+          }
 
-      .read-more {
-        margin-bottom: -60px;
+          .wp-block-post-excerpt__more-link {
+            display: none;
+          }
 
-        a {
-          background-color: $blue;
-          width: 100%;
-          text-align: center;
+          .read-more {
+            margin-bottom: -60px;
+
+            a {
+              background-color: $blue;
+              width: 100%;
+              text-align: center;
+            }
+          }
         }
       }
     }

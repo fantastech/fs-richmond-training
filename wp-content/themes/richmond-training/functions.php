@@ -274,14 +274,22 @@ function fs_get_background_class_names()
 // });
 
 add_shortcode('show_course_field', function () {
+    if(is_single() && 'course' == get_post_type() ):
+        if(has_post_thumbnail()) {
+            $image = get_the_post_thumbnail_url();
+        }
+        else{
+            $image = get_template_directory_uri().'/assets/images/default.svg';
+        } 
     ob_start();
     $video = get_field('_bean_course_video_html');
     $price = get_field('_bean_course_price');
     $button = get_field('_bean_course_button');
     ?>
-    <div class="sidebar-container">
+
+        <div class="sidebar-container">
             <?php
-    
+
             $args = array(
                 'post_status'=>'publish',
                 'post_type'=>'course',
@@ -292,47 +300,54 @@ add_shortcode('show_course_field', function () {
             $post_id = get_the_ID(); 
             $tags = get_the_terms($post_id,'courses_category');
             
-            if(is_single() && 'course' == get_post_type() ){
-                if(has_post_thumbnail()) {
-                    $image = get_the_post_thumbnail_url();
-                }
-                else{
-                    $image = get_template_directory_uri().'/assets/images/default.svg';
-                } 
-            ?>
-                <div class="course-meta">
-                    <div class="masonry-project course-price-meta">
-                        <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
-                        <?php if (!is_wp_error($tags) && !empty($tags)){
-                            foreach($tags as $tag){?>
-                                <div class="category">
-                                    <p>CATEGORY</p>
-                                    <h3 class="category-name"><?php echo $tag->name; ?></h3>
-                                </div>
-                            <?php }
-                        }?>
-                        <div class="price">
-                            <p>PRICE</p>
-                            <h3 class="course-price"> £ <?php echo esc_html( $price ); ?></h3>
-                        </div>
-                        <div class="wp-block-button button-blue">
-                            <a href="<?php echo $button ?>" target="_blank" class="wp-block-button__link">BUY COURSE NOW</a>
-                        </div>
-                         <div class="wp-block-button button-transparent">
-                            <a href="https://videotilehost.com/richmondtraining/freeTrial.php" target="_blank" class="wp-block-button__link">REGISTER FOR A FREE TRIAL</a>
-                        </div>
-                         <div class="wp-block-button button-transparent">
-                            <a href="https://videotilehost.com/richmondtraining/" target="_blank" class="wp-block-button__link">CANDIDATE LOGIN</a>
-                        </div>
-                        
-                    </div>
-                </div>
-            <?php }
-
-            ?>
             
-    </div>
-    <?php 
+            ?>
+            <div class="course-meta">
+                <div class="masonry-project course-price-meta">
+                    <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
+                    <?php if (!is_wp_error($tags) && !empty($tags)){
+                        foreach($tags as $tag){?>
+                            <div class="category">
+                                <p>CATEGORY</p>
+                                <h3 class="category-name"><?php echo $tag->name; ?></h3>
+                            </div>
+                        <?php }
+                    }?>
+                    <div class="price">
+                        <p>PRICE</p>
+                        <h3 class="course-price"> £ <?php echo esc_html( $price ); ?></h3>
+                    </div>
+                    <div class="wp-block-button button-blue">
+                        <a href="<?php echo $button ?>" target="_blank" class="wp-block-button__link">BUY COURSE NOW</a>
+                    </div>
+                     <div class="wp-block-button button-transparent">
+                        <a href="https://videotilehost.com/richmondtraining/freeTrial.php" target="_blank" class="wp-block-button__link">REGISTER FOR A FREE TRIAL</a>
+                    </div>
+                     <div class="wp-block-button button-transparent">
+                        <a href="https://videotilehost.com/richmondtraining/" target="_blank" class="wp-block-button__link">CANDIDATE LOGIN</a>
+                    </div>
+                    
+                </div>
+            </div>
+                
+        </div>
+        <?php elseif ('post' == get_post_type()) :
+            if(has_post_thumbnail()) {
+                $image = get_the_post_thumbnail_url();
+            }
+            else{
+                $image = get_template_directory_uri().'/assets/images/default.svg';
+            } 
+        ?>
+            <div class="post-meta">
+                <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
+            </div>
+        <?else:
+            return;
+        ?>
+
+    <?php endif; ?>
+    <?php
     $html = ob_get_clean();
     return $html;
 });

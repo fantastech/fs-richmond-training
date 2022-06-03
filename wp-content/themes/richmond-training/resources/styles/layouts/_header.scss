@@ -51,8 +51,11 @@
 
 .ast-title-bar-wrap {
   clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
-  margin-left: 30px;
-  margin-right: 30px;
+  width: 1220px;
+  margin: 0 auto;
+  @include media-down(tablet) {
+    width: auto;
+  }
 
   .ast-advanced-headers-title {
     text-align: left;
@@ -71,14 +74,6 @@ header {
 
   .ast-button-wrap .menu-toggle.main-header-menu-toggle {
     flex-direction: row-reverse;
-  }
-}
-
-.ast-advanced-headers-vertical-center {
-  width: 1220px;
-  margin: 0 auto;
-  @include media-down(tablet) {
-    width: auto;
   }
 }
 
