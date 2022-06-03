@@ -40,7 +40,10 @@ input[type="reset"] {
 }
 
 .wp-block-button {
-  width: 100%;
+  min-width: 240px;
+  @include media-down(tablet) {
+    width: 100%;
+  }
 
   .wp-block-button__link {
     font-size: 12px !important;

@@ -61,7 +61,12 @@
 }
 
 .banner-row {
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+
   .wp-block-cover {
+    min-height: 400px;
+    padding: 0;
+
     .wp-block-cover__inner-container {
       .wp-block-column {
         @include media-down(mobile) {
@@ -109,8 +114,9 @@
     }
 
     .wp-block-cover__inner-container {
-      .wp-block-column {
+      .inner-block {
         margin-bottom: 30px;
+        padding: 22px 28px 22px 32px;
 
         .wp-block-button {
           @include media-down(mobile) {
@@ -121,6 +127,39 @@
         h3 {
           margin-top: 0;
           margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.call-to-action-banner {
+  .wp-block-cover {
+    background-image: linear-gradient(108deg, #1e9dda 0%, #dc8244 100%);
+    padding: 45px 110px;
+    @include media-down(mobile) {
+      padding: 20px;
+    }
+
+    .wp-block-cover__background {
+      background: linear-gradient(108deg, #1e9dda 0%, #dc8244 100%) !important;
+    }
+
+    .wp-block-cover__inner-container {
+      padding: 30px 100px;
+      background: linear-gradient(108deg, #1e9dda 0%, #dc8244 100%);
+      @include media-down(mobile) {
+        padding: 30px;
+      }
+
+      .wp-block-column {
+        p {
+          color: $dark-blue;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          @include media-down(mobile) {
+            margin-bottom: 0 !important;
+          }
         }
       }
     }
