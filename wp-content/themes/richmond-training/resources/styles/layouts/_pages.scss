@@ -46,9 +46,62 @@
   }
 }
 
+.text-font-size-18 {
+  p {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.text-font-size-24 {
+  p {
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+
+.banner-row {
+  .wp-block-cover {
+    .wp-block-cover__inner-container {
+      .wp-block-column {
+        @include media-down(mobile) {
+          padding-left: 20px !important;
+          padding-bottom: 0 !important;
+        }
+      }
+    }
+  }
+}
+
+.text-row {
+  .wp-block-columns {
+    @include media-down(mobile) {
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+      padding-bottom: 10px !important;
+    }
+  }
+}
+
+.product-and-service-row {
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
+
+  .service-box {
+    text-align: center;
+    @include media-down(mobile) {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+  }
+}
+
 .two-column-row {
   margin-top: 60px;
   margin-bottom: 60px !important;
+  @include media-down(mobile) {
+    margin-top: 0 !important;
+  }
 
   .wp-block-cover {
     @include media-down(mobile) {

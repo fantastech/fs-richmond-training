@@ -39,58 +39,40 @@ input[type="reset"] {
   }
 }
 
-.button-dark-blue {
-  background-color: $dark-blue;
+.wp-block-button {
   width: 100%;
-  line-height: 1;
-  padding: 21px 2px;
-  border: 1px solid $dark-blue;
 
-  &:hover,
-  &:focus {
-    background-color: $dark-blue;
+  .wp-block-button__link {
+    font-size: 12px !important;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    border-radius: 0;
+    line-height: 1;
+    padding: 23px 2px;
   }
 
-  a {
-    color: $white !important;
-    font-size: 12px;
-  }
-}
-
-.button-blue {
-  background-color: $blue;
-  margin-bottom: 30px;
-  width: 100%;
-  line-height: 1;
-  padding: 21px 2px;
-  border: 1px solid $blue;
-
-  &:hover,
-  &:focus {
-    background-color: $blue;
+  &.button-dark-blue {
+    .wp-block-button__link {
+      background-color: $dark-blue;
+    }
   }
 
-  a {
-    color: $white !important;
-    font-size: 12px;
-  }
-}
-
-.button-transparent {
-  background-color: transparent;
-  margin-bottom: 30px;
-  border: 1px solid $dark-blue;
-  width: 100%;
-  line-height: 1;
-  padding: 21px 2px;
-
-  &:hover,
-  &:focus {
-    background-color: unset;
+  &.button-blue {
+    .wp-block-button__link {
+      background-color: $blue;
+      margin-bottom: 30px;
+      border: 1px solid $blue;
+      color: $white;
+    }
   }
 
-  a {
-    color: $dark-blue !important;
-    font-size: 12px;
+  &.button-transparent {
+    .wp-block-button__link {
+      background-color: transparent;
+      margin-bottom: 30px;
+      border: 1px solid $dark-blue;
+      color: $dark-blue;
+    }
   }
 }
