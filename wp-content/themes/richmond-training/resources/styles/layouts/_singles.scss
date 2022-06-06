@@ -1,1 +1,28 @@
 /* Singles */
+
+.single-post {
+  &.ast-single-post {
+    .post-featured-image {
+      img {
+        width: 360px;
+        height: 360px;
+        object-fit: cover;
+      }
+    }
+
+    // ul {
+    //   li {
+    //     margin-bottom: 30px;
+    //   }
+    // }
+  }
+  //  	#primary {
+  //     width: 65%;
+  //     padding-left: 60px;
+  //     padding-right: 40px;
+  // }
+  // #secondary {
+  //     width: 35%;
+  //     padding-right: 60px;
+  // }
+}

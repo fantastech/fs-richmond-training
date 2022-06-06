@@ -32,4 +32,5 @@ mix
   });
 
 mix
- .copyDirectory('resources/images', 'assets/images');
+  .copyDirectory('resources/images', 'assets/images')
+  .copyDirectory('resources/fonts', 'assets/fonts');

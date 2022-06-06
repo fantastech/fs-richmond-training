@@ -303,7 +303,7 @@ add_shortcode('show_course_field', function () {
             
             ?>
             <div class="course-meta">
-                <div class="masonry-project course-price-meta">
+                <div class="course-price-meta">
                     <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
                     <?php if (!is_wp_error($tags) && !empty($tags)){
                         foreach($tags as $tag){?>
@@ -339,7 +339,7 @@ add_shortcode('show_course_field', function () {
                 $image = get_template_directory_uri().'/assets/images/default.svg';
             } 
         ?>
-            <div class="post-meta">
+            <div class="post-featured-image">
                 <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
             </div>
         <?else:

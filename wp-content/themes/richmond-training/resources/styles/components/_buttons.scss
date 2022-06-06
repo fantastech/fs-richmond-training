@@ -58,6 +58,7 @@ input[type="reset"] {
   &.button-dark-blue {
     .wp-block-button__link {
       background-color: $dark-blue;
+      border: 1px solid $dark-blue;
     }
   }
 
@@ -75,6 +76,15 @@ input[type="reset"] {
       background-color: transparent;
       margin-bottom: 30px;
       border: 1px solid $dark-blue;
+      color: $dark-blue;
+    }
+  }
+
+  &.button-white {
+    .wp-block-button__link {
+      background-color: $white;
+      margin-bottom: 30px;
+      border: 1px solid $white;
       color: $dark-blue;
     }
   }

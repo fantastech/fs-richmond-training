@@ -1,6 +1,10 @@
 /* Todo */
 
 footer {
+  .wp-block-image {
+    margin: 0 !important;
+  }
+
   .site-primary-footer-wrap {
     .widget-title {
       color: $white;
@@ -9,6 +13,7 @@ footer {
       font-weight: 600;
       font-family: $font-secondary;
       margin-bottom: 30px;
+      letter-spacing: 1.92px;
       @include media-down(tablet) {
         text-align: left;
       }
@@ -26,6 +31,17 @@ footer {
 
       p {
         margin-bottom: 0;
+      }
+    }
+
+    .site-footer-primary-section-1 {
+      .footer-widget-area {
+        .widget {
+          margin-bottom: 30px !important;
+          @include media-down(tablet) {
+            margin: 0 !important;
+          }
+        }
       }
     }
 
@@ -68,6 +84,19 @@ footer {
         width: 50%;
         margin: auto;
         align-items: center;
+        @include media-down(tablet) {
+          width: 70%;
+        }
+
+        .wp-block-image img {
+          @include media-down(tablet) {
+            width: 165px;
+          }
+          @include media-down(mobile) {
+            width: 85px;
+            padding-right: 20px;
+          }
+        }
 
         .widget {
           margin-bottom: 0;
@@ -99,12 +128,18 @@ footer {
 
     p {
       margin-bottom: 70px;
+      @include media-down(mobile) {
+        margin-bottom: 50px;
+      }
     }
   }
 
   .wp-block-post-template {
     margin-left: 0;
     margin-bottom: 150px;
+    @include media-down(tablet) {
+      margin-bottom: 0;
+    }
 
     &.footer-blog {
       gap: 3.6em !important;
@@ -158,6 +193,7 @@ footer {
               background-color: $blue;
               width: 100%;
               text-align: center;
+              border: 1px solid $blue;
             }
           }
         }
