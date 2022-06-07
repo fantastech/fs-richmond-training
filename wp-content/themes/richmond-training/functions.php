@@ -281,12 +281,10 @@ add_shortcode('show_course_field', function () {
         else{
             $image = get_template_directory_uri().'/assets/images/default.svg';
         } 
+        $price = get_field('_bean_course_price');
+        $button = get_field('_bean_course_button');
     ob_start();
-    $video = get_field('_bean_course_video_html');
-    $price = get_field('_bean_course_price');
-    $button = get_field('_bean_course_button');
     ?>
-
         <div class="sidebar-container">
             <?php
 
@@ -303,7 +301,7 @@ add_shortcode('show_course_field', function () {
             
             ?>
             <div class="course-meta">
-                <div class="masonry-project course-price-meta">
+                <div class="course-price-meta">
                     <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
                     <?php if (!is_wp_error($tags) && !empty($tags)){
                         foreach($tags as $tag){?>
@@ -339,7 +337,7 @@ add_shortcode('show_course_field', function () {
                 $image = get_template_directory_uri().'/assets/images/default.svg';
             } 
         ?>
-            <div class="post-meta">
+            <div class="post-featured-image">
                 <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
             </div>
         <?else:
@@ -350,4 +348,13 @@ add_shortcode('show_course_field', function () {
     <?php
     $html = ob_get_clean();
     return $html;
+});
+
+add_filter('the_content', function($content){
+    if(is_singular('course')){
+        $video = get_field('_bean_course_video_html', get_the_ID());
+        $video_html = '<div class="video-section">'. $video.'</div>';
+        $content = $video_html . $content;
+    }
+    return $content;
 });

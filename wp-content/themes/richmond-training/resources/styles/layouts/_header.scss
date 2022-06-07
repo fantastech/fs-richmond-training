@@ -10,6 +10,7 @@
       .ast-menu-toggle {
         line-height: 1 !important;
         outline: 0;
+        border: 0;
       }
     }
 
@@ -27,12 +28,42 @@
   .ast-icon svg {
     margin-top: 0 !important;
   }
+
+  .widget_media_image {
+    margin-top: 20px;
+
+    .wp-block-image {
+      @include media-down(tablet) {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
 }
 
 .ast-mobile-popup-drawer {
   .ast-mobile-popup-overlay {
     background-color: rgba(0, 0, 0, 0.7) !important;
   }
+
+  .ast-mobile-popup-header {
+    .menu-toggle-close {
+      font-size: 30px !important;
+      padding: 30px;
+      @include media-down(mobile) {
+        padding-right: 10px;
+      }
+
+      .ahfb-svg-iconset svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}
+
+.ast-desktop .ast-mobile-popup-drawer.active .ast-mobile-popup-inner {
+  max-width: 640px;
 }
 
 .ast-desktop-popup-content,
@@ -49,6 +80,13 @@
   }
 }
 
+.ast-header-break-point {
+  .ast-icon.icon-arrow svg {
+    height: 0.6em !important;
+    width: 0.6em !important;
+  }
+}
+
 .ast-title-bar-wrap {
   clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
   width: 1220px;
@@ -60,6 +98,9 @@
   .ast-advanced-headers-title {
     text-align: left;
     padding-left: 40px;
+    @include media-down(mobile) {
+      padding-left: 30px;
+    }
   }
 }
 
@@ -72,11 +113,47 @@ header {
     background-image: linear-gradient(180deg, #f0f9fd 0%, #fff 100%);
   }
 
-  .ast-button-wrap .menu-toggle.main-header-menu-toggle {
-    flex-direction: row-reverse;
+  .ast-button-wrap {
+    .menu-toggle.main-header-menu-toggle {
+      flex-direction: row-reverse;
+      padding-right: 0 !important;
+      @include media-down(mobile-sm) {
+        padding: 0;
+      }
+    }
   }
 }
 
-[data-section="section-header-mobile-trigger"] .ast-button-wrap .mobile-menu-wrap .mobile-menu {
-  margin-right: 3px;
+[data-section="section-header-mobile-trigger"] .ast-button-wrap {
+  .mobile-menu-wrap .mobile-menu {
+    margin-right: 10px;
+  }
+
+  .mobile-menu-toggle-icon .ast-mobile-svg {
+    width: 26px;
+    height: 30px;
+  }
+}
+
+.header-widget-area[data-section="sidebar-widgets-header-widget-2"], {
+  .widget_text {
+    position: relative;
+
+    p {
+      position: absolute;
+      top: -140px;
+      left: 25px;
+      font-size: 24px;
+      font-weight: 500;
+      color: #cde0ef;
+      @include media-down(tablet) {
+        top: -190px;
+        left: 0;
+      }
+      @include media-down(mobile) {
+        top: -75px;
+        left: 25px;
+      }
+    }
+  }
 }

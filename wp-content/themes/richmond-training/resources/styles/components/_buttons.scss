@@ -44,6 +44,10 @@ input[type="reset"] {
   @include media-down(tablet) {
     width: 100%;
   }
+  @include media-down(mobile) {
+    width: 100%;
+    min-width: auto;
+  }
 
   .wp-block-button__link {
     font-size: 12px !important;
@@ -58,6 +62,7 @@ input[type="reset"] {
   &.button-dark-blue {
     .wp-block-button__link {
       background-color: $dark-blue;
+      border: 1px solid $dark-blue;
     }
   }
 
@@ -75,6 +80,15 @@ input[type="reset"] {
       background-color: transparent;
       margin-bottom: 30px;
       border: 1px solid $dark-blue;
+      color: $dark-blue;
+    }
+  }
+
+  &.button-white {
+    .wp-block-button__link {
+      background-color: $white;
+      margin-bottom: 30px;
+      border: 1px solid $white;
       color: $dark-blue;
     }
   }
