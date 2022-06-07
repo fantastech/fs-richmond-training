@@ -44,6 +44,10 @@ input[type="reset"] {
   @include media-down(tablet) {
     width: 100%;
   }
+  @include media-down(mobile) {
+    width: 100%;
+    min-width: auto;
+  }
 
   .wp-block-button__link {
     font-size: 12px !important;

@@ -281,12 +281,10 @@ add_shortcode('show_course_field', function () {
         else{
             $image = get_template_directory_uri().'/assets/images/default.svg';
         } 
+        $price = get_field('_bean_course_price');
+        $button = get_field('_bean_course_button');
     ob_start();
-    $video = get_field('_bean_course_video_html');
-    $price = get_field('_bean_course_price');
-    $button = get_field('_bean_course_button');
     ?>
-
         <div class="sidebar-container">
             <?php
 
@@ -350,4 +348,13 @@ add_shortcode('show_course_field', function () {
     <?php
     $html = ob_get_clean();
     return $html;
+});
+
+add_filter('the_content', function($content){
+    if(is_singular('course')){
+        $video = get_field('_bean_course_video_html', get_the_ID());
+        $video_html = '<div class="video-section">'. $video.'</div>';
+        $content = $video_html . $content;
+    }
+    return $content;
 });

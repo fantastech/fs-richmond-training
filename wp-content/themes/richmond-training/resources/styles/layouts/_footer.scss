@@ -138,6 +138,9 @@ footer {
     margin-left: 0;
     margin-bottom: 150px;
     @include media-down(tablet) {
+      margin-bottom: 100px;
+    }
+    @include media-down(mobile) {
       margin-bottom: 0;
     }
 
