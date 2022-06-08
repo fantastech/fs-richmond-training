@@ -99,8 +99,12 @@
     text-align: left;
     padding-left: 40px;
     @include media-down(mobile) {
-      padding-left: 30px;
+      padding-left: 0;
     }
+  }
+
+  .taxonomy-description {
+    display: none;
   }
 }
 

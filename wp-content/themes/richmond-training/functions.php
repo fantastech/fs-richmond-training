@@ -272,7 +272,12 @@ function fs_get_background_class_names()
 //         print_r ($price);
 //      }
 // });
-
+add_filter( 'get_the_archive_title', function ($title) {
+    if (is_post_type_archive('course')) {
+        $title = post_type_archive_title( '', false );
+      }
+      return $title;
+});
 add_shortcode('show_course_field', function () {
     if(is_single() && 'course' == get_post_type() ):
         if(has_post_thumbnail()) {
@@ -303,6 +308,7 @@ add_shortcode('show_course_field', function () {
         <div class="course-meta">
             <div class="course-price-meta">
                 <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
+                <h2 class="title">Online Course</h2>
                 <?php if (!is_wp_error($tags) && !empty($tags)){
                     foreach($tags as $tag){?>
                         <div class="category">
@@ -358,3 +364,61 @@ add_filter('the_content', function($content){
     }
     return $content;
 });
+
+if( function_exists('acf_add_options_page') ) {
+    
+    acf_add_options_page(array(
+        'page_title'     => 'Global Settings',
+        'menu_title'    => 'Global Settings',
+        'menu_slug'     => 'theme-general-settings',
+        'capability'    => 'edit_posts',
+        'redirect'        => false
+    ));
+}
+
+add_action( 'astra_primary_content_top', 'wpd_astra_primary_content_top' );
+function wpd_astra_primary_content_top() {
+    
+    if(is_post_type_archive('post')){
+        $blog_sub_title = get_field('blog_sub_title','option');
+        $blog_description = get_field('blog_description','option');
+     ?>
+    <div class="title-container">
+        <div class="content-column">
+            <h2 class="title"><?php echo $blog_sub_title; ?></h2>
+            <p class="description"><?php echo $blog_description; ?></p>
+        </div>
+    </div>
+     <?php   
+        
+    }
+    else if(is_post_type_archive('course')){
+        $course_sub_title = get_field('course_sub_title','option');
+        $course_description = get_field('course_description','option');
+        $category_title=get_field('category_title','option');
+    ?>
+        <div class="title-container course-archive">
+            <div class="content-column">
+                <h2 class="title"><?php echo $course_sub_title; ?></h2>
+                <p class="description"><?php echo $course_description; ?></p>
+            </div>
+            <div class="content-column">
+                <div class="category-select">
+                    <select>
+                        <option><?php echo $category_title;?></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    <?php
+    }
+
+}
+
+add_filter( 'astra_page_layout', function($layout){
+    $post_type = get_post_type();
+    if($post_type == 'course'){
+           $layout = astra_get_option( 'archive-post-sidebar-layout' );
+    }
+    return $layout;
+} );

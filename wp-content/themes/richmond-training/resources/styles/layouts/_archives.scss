@@ -1,6 +1,75 @@
 /* Archives */
 
-.post-content.ast-grid-common-col {
+.title-container {
+  margin-bottom: 60px;
+  width: 55%;
+  @include media-down(tablet) {
+    width: 100%;
+  }
+
+  &.course-archive {
+    display: flex;
+    width: 100%;
+  }
+}
+
+.read-more {
+  margin-bottom: -30px !important;
+
+  a {
+    background-color: $dark-blue;
+    width: 100%;
+    text-align: center;
+    border: 1px solid $dark-blue;
+  }
+}
+
+.ast-article-post {
+  margin-bottom: 120px;
+
+  .blog-layout-1 {
     border: 1px solid black;
-    padding: 0px 60px;
+    padding: 0 60px;
+  }
+
+  .post-content {
+    .ast-blog-featured-section {
+      margin-top: -30px;
+      margin-bottom: 30px;
+    }
+
+    .entry-content {
+      p:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+
+.ast-pagination {
+  padding-top: 140px;
+  padding-bottom: 80px;
+
+  .navigation {
+    .nav-links {
+      .page-numbers {
+        width: 60px;
+        height: 60px;
+        line-height: 5;
+        font-size: 12px;
+        background-color: $tertiary;
+        border: 0;
+
+        &.current {
+          color: $white;
+          background-color: $blue;
+        }
+
+        &.next,
+        &.prev {
+          display: none;
+        }
+      }
+    }
+  }
 }
