@@ -272,7 +272,12 @@ function fs_get_background_class_names()
 //         print_r ($price);
 //      }
 // });
-
+add_filter( 'get_the_archive_title', function ($title) {
+    if (is_post_type_archive('course')) {
+        $title = post_type_archive_title( '', false );
+      }
+      return $title;
+});
 add_shortcode('show_course_field', function () {
     if(is_single() && 'course' == get_post_type() ):
         if(has_post_thumbnail()) {
@@ -285,64 +290,65 @@ add_shortcode('show_course_field', function () {
         $button = get_field('_bean_course_button');
     ob_start();
     ?>
-        <div class="sidebar-container">
-            <?php
+    <div class="sidebar-container">
+        <?php
 
-            $args = array(
-                'post_status'=>'publish',
-                'post_type'=>'course',
-                'posts_per_page'=> 3,
-                'orderby'=>'modified',
-                'order'=>'DSC',   
-            );
-            $post_id = get_the_ID(); 
-            $tags = get_the_terms($post_id,'courses_category');
-            
-            
-            ?>
-            <div class="course-meta">
-                <div class="course-price-meta">
-                    <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
-                    <?php if (!is_wp_error($tags) && !empty($tags)){
-                        foreach($tags as $tag){?>
-                            <div class="category">
-                                <p>CATEGORY</p>
-                                <h3 class="category-name"><?php echo $tag->name; ?></h3>
-                            </div>
-                        <?php }
-                    }?>
-                    <div class="price">
-                        <p>PRICE</p>
-                        <h3 class="course-price"> £ <?php echo esc_html( $price ); ?></h3>
-                    </div>
-                    <div class="wp-block-button button-blue">
-                        <a href="<?php echo $button ?>" target="_blank" class="wp-block-button__link">BUY COURSE NOW</a>
-                    </div>
-                     <div class="wp-block-button button-transparent">
-                        <a href="https://videotilehost.com/richmondtraining/freeTrial.php" target="_blank" class="wp-block-button__link">REGISTER FOR A FREE TRIAL</a>
-                    </div>
-                     <div class="wp-block-button button-transparent">
-                        <a href="https://videotilehost.com/richmondtraining/" target="_blank" class="wp-block-button__link">CANDIDATE LOGIN</a>
-                    </div>
-                    
-                </div>
-            </div>
-                
-        </div>
-        <?php elseif ('post' == get_post_type()) :
-            if(has_post_thumbnail()) {
-                $image = get_the_post_thumbnail_url();
-            }
-            else{
-                $image = get_template_directory_uri().'/assets/images/default.svg';
-            } 
+        $args = array(
+            'post_status'=>'publish',
+            'post_type'=>'course',
+            'posts_per_page'=> 3,
+            'orderby'=>'modified',
+            'order'=>'DSC',   
+        );
+        $post_id = get_the_ID(); 
+        $tags = get_the_terms($post_id,'courses_category');
+        
+        
         ?>
-            <div class="post-featured-image">
+        <div class="course-meta">
+            <div class="course-price-meta">
                 <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
+                <h2 class="title">Online Course</h2>
+                <?php if (!is_wp_error($tags) && !empty($tags)){
+                    foreach($tags as $tag){?>
+                        <div class="category">
+                            <p>CATEGORY</p>
+                            <h3 class="category-name"><?php echo $tag->name; ?></h3>
+                        </div>
+                    <?php }
+                }?>
+                <div class="price">
+                    <p>PRICE</p>
+                    <h3 class="course-price"> £ <?php echo esc_html( $price ); ?></h3>
+                </div>
+                <div class="wp-block-button button-blue">
+                    <a href="<?php echo $button ?>" target="_blank" class="wp-block-button__link">BUY COURSE NOW</a>
+                </div>
+                 <div class="wp-block-button button-transparent">
+                    <a href="https://videotilehost.com/richmondtraining/freeTrial.php" target="_blank" class="wp-block-button__link">REGISTER FOR A FREE TRIAL</a>
+                </div>
+                 <div class="wp-block-button button-transparent">
+                    <a href="https://videotilehost.com/richmondtraining/" target="_blank" class="wp-block-button__link">CANDIDATE LOGIN</a>
+                </div>
+                
             </div>
-        <?else:
-            return;
-        ?>
+        </div>
+            
+    </div>
+    <?php elseif (is_single() && 'post' == get_post_type()) :
+        if(has_post_thumbnail()) {
+            $image = get_the_post_thumbnail_url();
+        }
+        else{
+            $image = get_template_directory_uri().'/assets/images/default.svg';
+        } 
+    ?>
+        <div class="post-featured-image">
+            <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
+        </div>
+    <?else:
+        return;
+    ?>
 
     <?php endif; ?>
     <?php
@@ -358,3 +364,61 @@ add_filter('the_content', function($content){
     }
     return $content;
 });
+
+if( function_exists('acf_add_options_page') ) {
+    
+    acf_add_options_page(array(
+        'page_title'     => 'Global Settings',
+        'menu_title'    => 'Global Settings',
+        'menu_slug'     => 'theme-general-settings',
+        'capability'    => 'edit_posts',
+        'redirect'        => false
+    ));
+}
+
+add_action( 'astra_primary_content_top', 'wpd_astra_primary_content_top' );
+function wpd_astra_primary_content_top() {
+    
+    if(is_post_type_archive('post')){
+        $blog_sub_title = get_field('blog_sub_title','option');
+        $blog_description = get_field('blog_description','option');
+     ?>
+    <div class="title-container">
+        <div class="content-column">
+            <h2 class="title"><?php echo $blog_sub_title; ?></h2>
+            <p class="description"><?php echo $blog_description; ?></p>
+        </div>
+    </div>
+     <?php   
+        
+    }
+    else if(is_post_type_archive('course')){
+        $course_sub_title = get_field('course_sub_title','option');
+        $course_description = get_field('course_description','option');
+        $category_title=get_field('category_title','option');
+    ?>
+        <div class="title-container course-archive">
+            <div class="content-column">
+                <h2 class="title"><?php echo $course_sub_title; ?></h2>
+                <p class="description"><?php echo $course_description; ?></p>
+            </div>
+            <div class="content-column">
+                <div class="category-select">
+                    <select>
+                        <option><?php echo $category_title;?></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    <?php
+    }
+
+}
+
+add_filter( 'astra_page_layout', function($layout){
+    $post_type = get_post_type();
+    if($post_type == 'course'){
+           $layout = astra_get_option( 'archive-post-sidebar-layout' );
+    }
+    return $layout;
+} );

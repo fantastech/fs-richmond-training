@@ -190,12 +190,10 @@ footer {
           }
 
           .read-more {
-            margin-bottom: -60px;
+            margin-bottom: -60px !important;
 
             a {
               background-color: $blue;
-              width: 100%;
-              text-align: center;
               border: 1px solid $blue;
             }
           }
