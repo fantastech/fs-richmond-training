@@ -34,6 +34,7 @@
       var equalizeHeightElements = [
           ['.wp-block-query .footer-blog .wp-block-post-title', false],
           ['.ast-article-post .post-content .entry-header .entry-title', false],
+          ['.ast-article-post .post-content .entry-content p:first-child', false],
           
       ];
       equalizeHeights(equalizeHeightElements);

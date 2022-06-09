@@ -54,9 +54,13 @@
         padding-right: 10px;
       }
 
-      .ahfb-svg-iconset svg {
-        width: 30px;
-        height: 30px;
+      .ast-svg-iconset {
+        .svg-baseline {
+          svg {
+            width: 30px;
+            height: 30px;
+          }
+        }
       }
     }
   }
@@ -95,10 +99,10 @@
     width: auto;
   }
 
-  .ast-advanced-headers-title {
+  .ast-container {
     text-align: left;
-    padding-left: 40px;
-    @include media-down(mobile) {
+    padding: 0 60px;
+    @include media-down(tablet) {
       padding-left: 0;
     }
   }
