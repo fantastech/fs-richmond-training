@@ -91,7 +91,7 @@ function fs_define_post_types_taxonomies()
     // fs_register_taxonomy('book_cat', 'Book Category', 'Book Categories', 'book');
 
     fs_register_post_type('course', 'Course', 'Courses');
-    fs_register_taxonomy('courses_category', 'Course Tags', 'Tags', 'course');
+    fs_register_taxonomy('courses_category', 'Course Tags', 'Course Category', 'course');
 }
 // Uncomment the lines below to add custom post type and taxonomies.
 // phpcs:ignore Squiz.Commenting.InlineComment.InvalidEndChar
@@ -335,20 +335,19 @@ add_shortcode('show_course_field', function () {
         </div>
             
     </div>
-    <?php elseif (is_single() && 'post' == get_post_type()) :
+    <?php elseif (is_single() && 'post' == get_post_type() || is_page_template('page-landing.php')) :
         if(has_post_thumbnail()) {
             $image = get_the_post_thumbnail_url();
         }
         else{
-            $image = get_template_directory_uri().'/assets/images/default.svg';
+           $image = get_template_directory_uri().'/assets/images/default.svg';
         } 
+        $img_htm='<img class="img-top" src="'. esc_url(str_replace('<p>','',$image)).'">';
     ?>
+
         <div class="post-featured-image">
-            <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
+            <?php echo  $img_htm; ?>
         </div>
-    <?else:
-        return;
-    ?>
 
     <?php endif; ?>
     <?php
@@ -379,7 +378,7 @@ if( function_exists('acf_add_options_page') ) {
 add_action( 'astra_primary_content_top', 'wpd_astra_primary_content_top' );
 function wpd_astra_primary_content_top() {
     
-    if(is_post_type_archive('post')){
+    if(is_home()){
         $blog_sub_title = get_field('blog_sub_title','option');
         $blog_description = get_field('blog_description','option');
      ?>
@@ -399,8 +398,10 @@ function wpd_astra_primary_content_top() {
     ?>
         <div class="title-container course-archive">
             <div class="content-column">
-                <h2 class="title"><?php echo $course_sub_title; ?></h2>
-                <p class="description"><?php echo $course_description; ?></p>
+                <div class="course-archive-content">
+                    <h2 class="title"><?php echo $course_sub_title; ?></h2>
+                    <p class="description"><?php echo $course_description; ?></p>
+                </div>
             </div>
             <div class="content-column">
                 <div class="category-select">
@@ -417,7 +418,7 @@ function wpd_astra_primary_content_top() {
 
 add_filter( 'astra_page_layout', function($layout){
     $post_type = get_post_type();
-    if($post_type == 'course'){
+    if($post_type == 'course' && !is_single()){
            $layout = astra_get_option( 'archive-post-sidebar-layout' );
     }
     return $layout;
