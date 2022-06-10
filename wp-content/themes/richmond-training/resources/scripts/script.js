@@ -53,4 +53,8 @@
 
     });
 
+    $('select').on('change',function() {
+      window.location = $(this).val();
+    });
+
 })(jQuery);

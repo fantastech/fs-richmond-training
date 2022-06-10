@@ -115,7 +115,9 @@ footer {
   margin-top: 120px;
 }
 
-.astra-advanced-hook-2967 {
+.footer-blog-row {
+  margin-top: 60px;
+
   .top-content {
     @include media-down(tablet) {
       padding-left: 20px;
@@ -127,9 +129,9 @@ footer {
     }
 
     p {
-      margin-bottom: 70px;
+      margin-bottom: 30px;
       @include media-down(mobile) {
-        margin-bottom: 50px;
+        margin-bottom: 0;
       }
     }
   }

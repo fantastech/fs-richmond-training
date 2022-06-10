@@ -34,40 +34,40 @@
     border-left: 0 !important;
     padding-left: 0 !important;
 
-    .sidebar-main {
-      .sidebar-container {
-        .course-meta {
-          img {
-            width: 100%;
-            height: 360px;
-            object-fit: cover;
-          }
+    // .sidebar-main {
+    //   .sidebar-container {
+    //     .course-meta {
+    //       img {
+    //         width: 100%;
+    //         height: 360px;
+    //         object-fit: cover;
+    //       }
 
-          .category {
-            margin-top: 30px;
-            margin-bottom: 30px;
+    //       .category {
+    //         margin-top: 30px;
+    //         margin-bottom: 30px;
 
-            p {
-              margin-bottom: 0;
-              line-height: 0;
-              font-size: 12px;
-              font-weight: 700;
-            }
-          }
+    //         p {
+    //           margin-bottom: 0;
+    //           line-height: 0;
+    //           font-size: 12px;
+    //           font-weight: 700;
+    //         }
+    //       }
 
-          .price {
-            margin-bottom: 30px;
+    //       .price {
+    //         margin-bottom: 30px;
 
-            p {
-              margin-bottom: 0;
-              line-height: 0;
-              font-size: 12px;
-              font-weight: 700;
-            }
-          }
-        }
-      }
-    }
+    //         p {
+    //           margin-bottom: 0;
+    //           line-height: 0;
+    //           font-size: 12px;
+    //           font-weight: 700;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
   }
 }
 
@@ -127,14 +127,11 @@
         padding-left: 0 !important;
         padding-right: 0 !important;
       }
-
-      p {
-        margin-bottom: 30px !important;
-      }
     }
   }
 
   .services-column {
+    margin-top: 30px;
     @include media-down(mobile) {
       margin-top: 0;
     }
@@ -164,7 +161,6 @@
 
 .two-column-row {
   margin-top: 60px;
-  margin-bottom: 60px !important;
   @include media-down(mobile) {
     margin-top: 0 !important;
   }
@@ -197,6 +193,10 @@
       }
     }
   }
+}
+
+.astra-advanced-hook-3186 {
+  padding-bottom: 0 !important;
 }
 
 .call-to-action-banner {
@@ -257,10 +257,47 @@
 
     .ast-inside-advanced-header-content {
       padding-right: 60px;
+      @include media-down(tablet) {
+        padding-right: 0;
+      }
 
       .ast-advanced-headers-layout {
         background: $dark-blue;
         padding-top: 280px;
+        @include media-down(tablet) {
+          padding-top: 99px;
+        }
+
+        .ast-container {
+          padding-right: 0;
+          @include media-down(tablet) {
+            padding-left: 20px !important;
+          }
+
+          .ast-advanced-headers-wrap {
+            display: flex;
+            justify-content: space-between;
+
+            .ast-advanced-headers-title {
+              max-width: 600px;
+              @include media-down(tablet) {
+                max-width: 100%;
+              }
+            }
+
+            .post-featured-image {
+              width: 50%;
+              position: absolute;
+              right: -60px;
+              top: -280px;
+
+              img {
+                height: 800px;
+                object-fit: cover;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -273,24 +310,52 @@
 
       #primary {
         width: 60%;
+        margin-top: 30px;
+        @include media-down(tablet) {
+          width: 100%;
+          padding-right: 20px;
+          padding-left: 20px;
+        }
+
+        article {
+          header.entry-header.ast-no-title.ast-no-meta {
+            display: none;
+          }
+        }
       }
 
       #secondary {
         width: 40%;
+        @include media-down(tablet) {
+          width: 100%;
+          padding-right: 20px;
+          padding-left: 20px !important;
+        }
 
         .post-featured-image {
           margin-top: -460px;
           margin-right: -60px;
           position: relative;
+          @include media-down(tablet) {
+            margin-top: 0;
+            margin-right: 0;
+          }
 
           img {
             height: 851px;
             object-fit: cover;
-            position: absolute;
             clip-path: polygon(0 0, 100% 3%, 100% 100%, 0% 100%);
+            @include media-down(tablet) {
+              height: 300px;
+            }
           }
         }
       }
     }
+  }
+
+  .product-and-service-row {
+    max-width: 1220px;
+    margin: 0 auto;
   }
 }
