@@ -99,16 +99,18 @@
     width: auto;
   }
 
-  .ast-container {
-    text-align: left;
-    padding: 0 60px;
-    @include media-down(tablet) {
-      padding-left: 0;
+  .ast-inside-advanced-header-content {
+    .ast-container {
+      text-align: left;
+      padding: 0 60px;
+      @include media-down(tablet) {
+        padding-left: 20px;
+      }
     }
-  }
 
-  .taxonomy-description {
-    display: none;
+    .taxonomy-description {
+      display: none;
+    }
   }
 }
 

@@ -18,6 +18,10 @@
         width: 100%;
       }
 
+      .title {
+        margin-bottom: 30px;
+      }
+
       .category-select {
         margin-left: 50px;
         @include media-down(tablet) {
@@ -125,6 +129,7 @@
         font-size: 12px;
         background-color: $tertiary;
         border: 0;
+        margin-right: 15px;
 
         &.current {
           color: $white;

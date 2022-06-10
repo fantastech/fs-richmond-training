@@ -307,7 +307,7 @@ add_shortcode('show_course_field', function () {
         ?>
         <div class="course-meta">
             <div class="course-price-meta">
-                <img class="card-img-top" src="<?php echo $image; ?>" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo $image; ?>">
                 <h2 class="title">Online Course</h2>
                 <?php if (!is_wp_error($tags) && !empty($tags)){
                     foreach($tags as $tag){?>
@@ -319,7 +319,7 @@ add_shortcode('show_course_field', function () {
                 }?>
                 <div class="price">
                     <p>PRICE</p>
-                    <h3 class="course-price"> £ <?php echo esc_html( $price ); ?></h3>
+                    <h3 class="course-price"> £<?php echo esc_html( $price ); ?></h3>
                 </div>
                 <div class="wp-block-button button-blue">
                     <a href="<?php echo $button ?>" target="_blank" class="wp-block-button__link">BUY COURSE NOW</a>
@@ -335,14 +335,14 @@ add_shortcode('show_course_field', function () {
         </div>
             
     </div>
-    <?php elseif (is_single() && 'post' == get_post_type() || is_page_template('page-landing.php')) :
+    <?php elseif (is_single() && 'post' == get_post_type()) :
         if(has_post_thumbnail()) {
             $image = get_the_post_thumbnail_url();
         }
         else{
            $image = get_template_directory_uri().'/assets/images/default.svg';
         } 
-        $img_htm='<img class="img-top" src="'. esc_url(str_replace('<p>','',$image)).'">';
+        $img_htm='<img src="'. esc_url(str_replace('<p>','',$image)).'">';
     ?>
 
         <div class="post-featured-image">
@@ -391,11 +391,21 @@ function wpd_astra_primary_content_top() {
      <?php   
         
     }
-    else if(is_post_type_archive('course')){
+    else if(is_post_type_archive('course') || is_tax()){
         $course_sub_title = get_field('course_sub_title','option');
         $course_description = get_field('course_description','option');
         $category_title=get_field('category_title','option');
+
+        $terms = get_terms(
+            [
+                'taxonomy'   => 'courses_category',
+                'hide_empty' => false,
+            ],
+        );
+        $post_id = get_the_ID(); 
+        $tags = get_the_terms($post_id,'courses_category');
     ?>
+
         <div class="title-container course-archive">
             <div class="content-column">
                 <div class="course-archive-content">
@@ -406,7 +416,12 @@ function wpd_astra_primary_content_top() {
             <div class="content-column">
                 <div class="category-select">
                     <select>
-                        <option><?php echo $category_title;?></option>
+                        <option>Select a category to refine the list …</option>
+                        <?php 
+                            foreach ($terms as $term) {?>
+                               <option value="<?php echo get_term_link($term); ?>"><?php echo  $term->name;?></option>
+                           <?php }
+                        ?>
                     </select>
                 </div>
             </div>
