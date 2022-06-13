@@ -122,6 +122,13 @@
 
   .navigation {
     .nav-links {
+      display: flex;
+      margin: auto;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+
       .page-numbers {
         width: 60px;
         height: 60px;
@@ -129,7 +136,6 @@
         font-size: 12px;
         background-color: $tertiary;
         border: 0;
-        margin-right: 15px;
 
         &.current {
           color: $white;
@@ -139,6 +145,11 @@
         &.next,
         &.prev {
           display: none;
+        }
+        @include media-down(mobile-sm) {
+          width: 40px;
+          height: 40px;
+          line-height: 3;
         }
       }
     }

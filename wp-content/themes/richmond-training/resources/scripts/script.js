@@ -33,8 +33,10 @@
       // Equalize height of the following elements
       var equalizeHeightElements = [
           ['.wp-block-query .footer-blog .wp-block-post-title', false],
+          ['.wp-block-query .footer-blog li .wp-block-post-excerpt__excerpt', false],
           ['.ast-article-post .post-content .entry-header .entry-title', false],
           ['.ast-article-post .post-content .entry-content p:first-child', false],
+          ['.two-column-row .inner-block .wp-block-cover__inner-container h3', false],
           
       ];
       equalizeHeights(equalizeHeightElements);
