@@ -53,7 +53,7 @@ if ( $astra_addon_show_breadcrumb ) {
 					<?php do_action( 'astra_advanced_header_layout_2_after_description' ); ?>
 				</div>
 				<?php } ?>
-
+				
 				<?php do_action( 'astra_advanced_header_layout_2_wrap_bottom' ); ?>
 			</div>
 
@@ -63,5 +63,8 @@ if ( $astra_addon_show_breadcrumb ) {
 				</div><!-- .ast-advanced-headers-breadcrumb -->
 	<?php } ?>
 		</div>
+	</div>
+	<div class="post-featured-image">
+		ddkj
 	</div>
 </div>
