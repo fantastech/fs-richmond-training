@@ -438,3 +438,61 @@ add_filter( 'astra_page_layout', function($layout){
     }
     return $layout;
 } );
+
+
+add_action('astra_footer_before', function(){
+    if(is_single() && 'course' == get_post_type() ){
+         if(has_post_thumbnail()) {
+            $image = get_the_post_thumbnail_url();
+        }
+        else{
+            $image = get_template_directory_uri().'/assets/images/default.svg';
+        } 
+        $price = get_field('_bean_course_price');
+        $button = get_field('_bean_course_button');
+     ob_start();
+    ?>
+    <div class="course-bottom-section">
+        <?php
+
+        $args = array(
+            'post_status'=>'publish',
+            'post_type'=>'course',
+            'posts_per_page'=> 3,
+            'orderby'=>'modified',
+            'order'=>'DSC',   
+        );
+        $post_id = get_the_ID(); 
+        $tags = get_the_terms($post_id,'courses_category');
+        
+        
+        ?>
+        <div class="course-column">
+            <div class="course-info-column">
+                <div class="price">
+                    <h3 class="course-price">Online Course £<?php echo esc_html( $price ); ?></h3>
+                </div>
+                <?php if (!is_wp_error($tags) && !empty($tags)){
+                    foreach($tags as $tag){?>
+                        <div class="category">
+                            <h2 class="category-name"><?php echo $tag->name; ?></h2>
+                        </div>
+                    <?php }
+                }?>
+                <div class="block-button">
+                    <div class="wp-block-button button-white">
+                    <a href="<?php echo $button ?>" target="_blank" class="wp-block-button__link">BUY COURSE NOW</a>
+                    </div>
+                     <div class="wp-block-button button-transparent">
+                        <a href="https://videotilehost.com/richmondtraining/freeTrial.php" target="_blank" class="wp-block-button__link">REGISTER FOR A FREE TRIAL</a>
+                    </div>
+                </div>
+            </div>
+            <div class="course-featured-img">
+                <img class="featured-image" src="<?php echo $image; ?>">
+            </div>
+        </div>
+    </div>
+    <?php
+    }
+});

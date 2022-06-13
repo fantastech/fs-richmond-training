@@ -97,7 +97,7 @@
 
     .wp-block-cover__inner-container {
       .wp-block-column {
-        @include media-down(mobile) {
+        @include media-down(tablet) {
           padding-left: 20px !important;
           padding-bottom: 0 !important;
         }
@@ -109,8 +109,8 @@
 .text-row {
   .wp-block-columns {
     @include media-down(tablet) {
-      padding-left: 30px !important;
-      padding-right: 30px !important;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
       padding-bottom: 20px !important;
     }
   }
@@ -138,6 +138,16 @@
 
     .service-box {
       text-align: center;
+      @include media-down(tablet-lg) {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+      }
+
+      .wp-block-button__link {
+        @include media-down(tablet-lg) {
+          padding: 23px 20px;
+        }
+      }
       @include media-down(mobile) {
         padding-left: 20px !important;
         padding-right: 20px !important;
@@ -191,6 +201,14 @@
           margin-bottom: 0;
         }
       }
+
+      .wp-block-button {
+        .wp-block-button__link {
+          @include media-down(mobile) {
+            margin-bottom: 0 !important;
+          }
+        }
+      }
     }
   }
 }
@@ -228,6 +246,10 @@
             margin-bottom: 30px;
           }
         }
+      }
+
+      .action-button {
+        margin-bottom: 0 !important;
       }
 
       .contact-column {

@@ -95,7 +95,7 @@
   clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
   width: 1220px;
   margin: 0 auto;
-  @include media-down(tablet) {
+  @include media-down(tablet-lg) {
     width: auto;
   }
 
@@ -151,18 +151,20 @@ header {
 
     p {
       position: absolute;
-      top: -140px;
+      top: -190px;
       left: 25px;
       font-size: 24px;
       font-weight: 500;
       color: #cde0ef;
       @include media-down(tablet) {
-        top: -190px;
         left: 0;
       }
       @include media-down(mobile) {
         top: -75px;
         left: 25px;
+      }
+      @include media-down(mobile-sm) {
+        top: -45px;
       }
     }
   }
