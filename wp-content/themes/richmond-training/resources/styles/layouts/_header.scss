@@ -1,4 +1,36 @@
 /* Header */
+
+.ast-mobile-popup-header {
+  .menu-toggle-close {
+    position: absolute;
+    top: 15px;
+    right: 45px;
+    @include media-down(tablet) {
+      right: 20px;
+    }
+    @include media-down(mobile) {
+      right: 3px;
+    }
+
+    .ast-svg-iconset {
+      .ahfb-svg-iconset {
+        svg {
+          display: none;
+        }
+
+        &::after {
+          content: url('../images/xmark-solid.svg');
+          position: relative;
+          top: 0;
+          pointer-events: none;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
 .ast-builder-menu-mobile {
   .main-navigation {
     .menu-item {
@@ -44,25 +76,6 @@
 .ast-mobile-popup-drawer {
   .ast-mobile-popup-overlay {
     background-color: rgba(0, 0, 0, 0.7) !important;
-  }
-
-  .ast-mobile-popup-header {
-    .menu-toggle-close {
-      font-size: 30px !important;
-      padding: 30px;
-      @include media-down(mobile) {
-        padding-right: 10px;
-      }
-
-      .ast-svg-iconset {
-        .svg-baseline {
-          svg {
-            width: 30px;
-            height: 30px;
-          }
-        }
-      }
-    }
   }
 }
 
@@ -145,27 +158,36 @@ header {
   }
 }
 
-.header-widget-area[data-section="sidebar-widgets-header-widget-2"], {
-  .widget_text {
-    position: relative;
+.header-widget-area[data-section="sidebar-widgets-header-widget-2"] {
+  position: absolute;
+  top: 15px;
+  left: 85px;
+  @include media-down(tablet) {
+    left: 30px;
+  }
+  @include media-down(mobile) {
+    left: 20px;
+  }
 
+  .widget_text {
     p {
-      position: absolute;
-      top: -190px;
-      left: 25px;
       font-size: 24px;
       font-weight: 500;
       color: #cde0ef;
-      @include media-down(tablet) {
-        left: 0;
-      }
-      @include media-down(mobile) {
-        top: -75px;
-        left: 25px;
-      }
-      @include media-down(mobile-sm) {
-        top: -45px;
-      }
+    }
+  }
+}
+
+.ast-mobile-popup-inner .ast-desktop-popup-content .header-widget-area {
+  .wp-block-image {
+    @include media-down(tablet-lg) {
+      text-align: center;
+    }
+
+    img {
+      max-width: 492px;
+      width: 100%;
+      margin-top: 120px;
     }
   }
 }

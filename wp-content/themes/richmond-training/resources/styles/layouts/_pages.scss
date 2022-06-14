@@ -1,5 +1,27 @@
 /* Pages CSS */
 
+.page {
+  .entry-content {
+    h2 {
+      margin-top: 60px;
+      @include media-down(mobile) {
+        margin-top: 40px;
+      }
+    }
+
+    h3 {
+      margin-top: 40px;
+      @include media-down(mobile) {
+        margin-top: 30px;
+      }
+    }
+
+    h4 {
+      margin-top: 30px;
+    }
+  }
+}
+
 .page-template-default {
   &.page {
     .site-content {
@@ -33,41 +55,6 @@
   #secondary {
     border-left: 0 !important;
     padding-left: 0 !important;
-
-    // .sidebar-main {
-    //   .sidebar-container {
-    //     .course-meta {
-    //       img {
-    //         width: 100%;
-    //         height: 360px;
-    //         object-fit: cover;
-    //       }
-
-    //       .category {
-    //         margin-top: 30px;
-    //         margin-bottom: 30px;
-
-    //         p {
-    //           margin-bottom: 0;
-    //           line-height: 0;
-    //           font-size: 12px;
-    //           font-weight: 700;
-    //         }
-    //       }
-
-    //       .price {
-    //         margin-bottom: 30px;
-
-    //         p {
-    //           margin-bottom: 0;
-    //           line-height: 0;
-    //           font-size: 12px;
-    //           font-weight: 700;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
   }
 }
 
@@ -123,6 +110,9 @@
 
   .content-column {
     .wp-block-column {
+      h2 {
+        margin-top: 0;
+      }
       @include media-down(mobile) {
         padding-left: 0 !important;
         padding-right: 0 !important;
@@ -276,6 +266,7 @@
 .page-template-page-landing {
   .ast-title-bar-wrap {
     background: transparent;
+    clip-path: unset;
 
     .ast-inside-advanced-header-content {
       padding-right: 60px;
@@ -284,8 +275,10 @@
       }
 
       .ast-advanced-headers-layout {
-        background: $dark-blue;
+        background: $blue;
         padding-top: 280px;
+        position: relative;
+        clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
         @include media-down(tablet) {
           padding-top: 99px;
         }
@@ -306,18 +299,30 @@
                 max-width: 100%;
               }
             }
+          }
+        }
+      }
 
-            .post-featured-image {
-              width: 50%;
-              position: absolute;
-              right: -60px;
-              top: -280px;
+      .page-featured-image {
+        width: 40%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        @include media-down(tablet) {
+          margin-right: 20px;
+        }
+        @include media-down(mobile) {
+          position: relative;
+          width: 100%;
+        }
 
-              img {
-                height: 800px;
-                object-fit: cover;
-              }
-            }
+        img {
+          clip-path: polygon(0 0, 100% 4%, 100% 100%, 0% 100%);
+          @include media-down(mobile) {
+            height: 300px;
+            object-fit: cover;
+            width: 100%;
+            padding: 20px 20px 0 20px;
           }
         }
       }
@@ -334,9 +339,12 @@
         width: 60%;
         margin-top: 30px;
         @include media-down(tablet) {
-          width: 100%;
+          width: 55%;
           padding-right: 20px;
           padding-left: 20px;
+        }
+        @include media-down(mobile) {
+          width: 100%;
         }
 
         article {
@@ -349,28 +357,9 @@
       #secondary {
         width: 40%;
         @include media-down(tablet) {
-          width: 100%;
+          width: 55%;
           padding-right: 20px;
           padding-left: 20px !important;
-        }
-
-        .post-featured-image {
-          margin-top: -460px;
-          margin-right: -60px;
-          position: relative;
-          @include media-down(tablet) {
-            margin-top: 0;
-            margin-right: 0;
-          }
-
-          img {
-            height: 851px;
-            object-fit: cover;
-            clip-path: polygon(0 0, 100% 3%, 100% 100%, 0% 100%);
-            @include media-down(tablet) {
-              height: 300px;
-            }
-          }
         }
       }
     }

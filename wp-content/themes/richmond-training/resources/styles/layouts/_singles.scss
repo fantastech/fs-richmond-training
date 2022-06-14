@@ -1,9 +1,5 @@
 /* Singles */
 
-.vjs-poster {
-  background-size: 100% !important;
-}
-
 .video-section {
   margin-bottom: 60px;
 
@@ -197,23 +193,36 @@
           width: 100%;
         }
 
-        .price,
-        .category {
-          margin-bottom: 30px;
+        .price {
+          margin-bottom: 15px;
+        }
 
+        .title {
+          margin-bottom: 30px;
+        }
+
+        .price,
+        .title {
           h2,
           h3 {
             color: $white;
           }
         }
       }
-    }
 
-    .course-featured-img {
-      img {
-        width: 270px;
-        height: 270px;
-        object-fit: cover;
+      .course-featured-img {
+        @include media-down(mobile) {
+          width: 100%;
+        }
+
+        img {
+          width: 270px;
+          height: 270px;
+          object-fit: cover;
+          @include media-down(mobile) {
+            width: 100%;
+          }
+        }
       }
     }
   }
