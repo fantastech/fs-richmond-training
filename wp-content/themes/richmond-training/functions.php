@@ -19,8 +19,6 @@ define('FS_THEME_USE_CUSTOM_JS', true); // This will enqueue script.js file.
 * Include core functions
 */
 require_once 'includes/core-functions.php';
-require_once 'includes/bb-functions.php';
-
 /**
 * Enqueue styles
 */
@@ -53,33 +51,6 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 /**
-* Define custom image sizes
-*/
-add_action('after_setup_theme', function () {
-    add_image_size('homepage-banner', 1920, 1280);
-    add_image_size('page-banner', 1920, 800);
-    add_image_size('post-item-thumbnail', 400, 300);
-});
-
-/**
-* Add custom image sizes to Beaver Builder sekector
-*/
-add_filter('image_size_names_choose', function ($sizes) {
-    global $_wp_additional_image_sizes;
-    if (empty($_wp_additional_image_sizes)) {
-        return $sizes;
-    }
-
-    foreach ($_wp_additional_image_sizes as $id => $data) {
-        if (!isset($sizes[$id])) {
-            $sizes[$id] = ucfirst(str_replace('-', ' ', $id));
-        }
-    }
-
-    return $sizes;
-}, 15, 1);
-
-/**
  * Create custom post types (if needed)
  * Delete the function or the lines if not needed
  *
@@ -102,182 +73,17 @@ add_action('init', 'fs_define_post_types_taxonomies', 0);
  *
  * @return array
  */
-function fs_get_theme_style_config()
-{
+function fs_get_theme_style_config(){
     return json_decode(file_get_contents(get_stylesheet_directory() . '/assets/palette.json'));
 }
 
-/**
- * Create custom button presets for BB Button module.
- *
- * @see /includes/bb-functions.php
- */
-function fs_get_bb_button_presets()
-{
-    $button_presets = [];
-    $default_border_settings = [
-        'style' => 'solid',
-        'color' => '282e6a',
-        'width' => [
-            'top' => '1',
-            'right' => '1',
-            'bottom' => '1',
-            'left' => '1',
-        ],
-        'radius' => [
-            'top_left' => '0',
-            'top_right' => '0',
-            'bottom_left' => '0',
-            'bottom_right' => '0',
-        ],
-        'shadow' => [
-            'color' => '',
-            'horizontal' => '',
-            'vertical' => '',
-            'blur' => '',
-            'spread' => '',
-        ],
-    ];
-    $default_typography_settings = [
-        'font_size' => [
-            'length' => '12',
-            'unit' => 'px',
-        ],
-        'line_height' => [
-            'length' => '12',
-            'unit' => 'px',
-        ],
-        'font_weight' => '600',
-        'text_align' => 'center',
-        'text_decoration' => 'none',
-        'font_family' => 'Default'
-    ];
-    $default_settings = [
-        'bg_color' => '282e6a',
-        'bg_hover_color' => '282e6a',
-        'text_color' => 'ffffff',
-        'text_hover_color' => 'ffffff',
-        'padding_top' => '10',
-        'padding_top_medium' => '25',
-        'padding_top_responsive' => '25',
-        'padding_right' => '2',
-        'padding_right_medium' => '2',
-        'padding_right_responsive' => '2',
-        'padding_bottom' => '25',
-        'padding_bottom_medium' => '25',
-        'padding_bottom_responsive' => '25',
-        'padding_left' => '2',
-        'padding_left_medium' => '2',
-        'padding_left_responsive' => '2',
-        'typography' => $default_typography_settings,
-        'typography_medium' => $default_typography_settings,
-        'typography_responsive' => $default_typography_settings,
-        'border' => $default_border_settings,
-        'border_medium' => $default_border_settings,
-        'border_responsive' => $default_border_settings,
-        'border_hover_color' => '282e6a',
-    ];
-
-    $button_presets['primary'] = [
-        'name' => 'Primary',
-        'class' => 'button-primary',
-        'settings' => $default_settings,
-    ];
-
-    $button_presets['secondary'] = [
-        'name' => 'Secondary',
-        'class' => 'button-secondary',
-        'settings' => fs_wp_parse_args_recursive([
-            'bg_color' => '1e9dda',
-            'bg_hover_color' => '1e9dda',
-            'text_color' => 'ffffff',
-            'text_hover_color' => 'ffffff',
-            'border' => [
-                'color' => '1e9dda',
-            ],
-        ], $default_settings),
-    ];
-
-    $button_presets['tertiary'] = [
-        'name' => 'Tertiary',
-        'class' => 'button-tertiary',
-        'settings' => fs_wp_parse_args_recursive([
-            'bg_color' => 'ffffff',
-            'bg_hover_color' => 'ffffff',
-            'text_color' => '282e6a',
-            'text_hover_color' => '282e6a',
-            'border' => [
-                'color' => 'ffffff',
-            ],
-        ], $default_settings),
-    ];
-
-    $button_presets['transparent'] = [
-        'name' => 'Transparent',
-        'class' => 'button-transparent',
-        'settings' => fs_wp_parse_args_recursive([
-            'bg_color' => 'rgba(255,0,0,0)',
-            'bg_hover_color' => 'rgba(255,0,0,0)',
-            'text_color' => 'ffffff',
-            'text_hover_color' => 'ffffff',
-            'border' => [
-                'color' => 'ffffff',
-            ],
-        ], $default_settings),
-    ];
-
-    return $button_presets;
-}
-
-/**
- * Returns a list of classes for use as "row presets" in Beaver Builder.
- *
- * @see /includes/bb-functions.php
- * @see /resources/styles/common/_utilities.scss
- *
- * @return array
- */
-function fs_get_row_preset_class_names()
-{
-    return [
-        'row-preset-default' => 'Default',
-        'row-preset-homepage-banner' => 'Homepage Banner',
-        'row-preset-page-banner' => 'Hero Banner',
-    ];
-}
-
-/**
- * Gets a list of classes available for use as background colours.
- *
- * @see /includes/bb-functions.php
- * @see /resources/styles/common/_utilities.scss
- *
- * @return array
- */
-function fs_get_background_class_names()
-{
-    return [
-        'bg-default' => 'Default',
-        'bg-grey-dark' => 'Dark grey',
-        'bg-grey-light' => 'Light grey',
-        'bg-white' => 'White',
-    ];
-}
-
-// add_shortcode('show_course_field', function () {
-//     $video = get_field('_bean_course_video_html');
-//     $price = get_field('_bean_course_price');
-
-//      if( $price ){
-//         print_r ($price);
-//      }
-// });
 add_filter( 'get_the_archive_title', function ($title) {
     if (is_post_type_archive('course')) {
         $title = post_type_archive_title( '', false );
       }
       return $title;
 });
+
 add_shortcode('show_course_field', function () {
     if(is_single() && 'course' == get_post_type() ):
         if(has_post_thumbnail()) {
@@ -442,7 +248,7 @@ add_filter( 'astra_page_layout', function($layout){
 
 add_action('astra_footer_before', function(){
     if(is_single() && 'course' == get_post_type() ){
-         if(has_post_thumbnail()) {
+        if(has_post_thumbnail()) {
             $image = get_the_post_thumbnail_url();
         }
         else{
@@ -450,7 +256,6 @@ add_action('astra_footer_before', function(){
         } 
         $price = get_field('_bean_course_price');
         $button = get_field('_bean_course_button');
-     ob_start();
     ?>
     <div class="course-bottom-section">
         <?php
@@ -472,13 +277,9 @@ add_action('astra_footer_before', function(){
                 <div class="price">
                     <h3 class="course-price">Online Course £<?php echo esc_html( $price ); ?></h3>
                 </div>
-                <?php if (!is_wp_error($tags) && !empty($tags)){
-                    foreach($tags as $tag){?>
-                        <div class="category">
-                            <h2 class="category-name"><?php echo $tag->name; ?></h2>
-                        </div>
-                    <?php }
-                }?>
+                <div class="title">
+                    <h2 class="course-title"><?php the_title(); ?></h2>
+                </div>
                 <div class="block-button">
                     <div class="wp-block-button button-white">
                     <a href="<?php echo $button ?>" target="_blank" class="wp-block-button__link">BUY COURSE NOW</a>

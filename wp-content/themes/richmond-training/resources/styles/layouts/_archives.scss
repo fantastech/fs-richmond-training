@@ -24,6 +24,15 @@
 
       .category-select {
         margin-left: 50px;
+        position: relative;
+
+        &::after {
+          content: url('../images/Polygon_1.svg');
+          position: absolute;
+          right: 20px;
+          top: 15px;
+          pointer-events: none;
+        }
         @include media-down(tablet) {
           margin-left: 0;
           margin-top: 30px;
@@ -34,6 +43,12 @@
           border: 1px solid #2a2f66;
           border-radius: 0;
           background-color: $light-blue;
+          appearance: none;
+          @include media-down(mobile-sm) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 40px;
+          }
         }
       }
     }

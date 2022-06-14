@@ -53,10 +53,9 @@
 
       // Your JS code here.
 
-    });
-
-    $('select').on('change',function() {
-      window.location = $(this).val();
+      $('select').on('change',function() {
+        window.location = $(this).val();
+      });
     });
 
 })(jQuery);

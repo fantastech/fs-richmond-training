@@ -64,7 +64,17 @@ if ( $astra_addon_show_breadcrumb ) {
 	<?php } ?>
 		</div>
 	</div>
-	<div class="post-featured-image">
-		ddkj
+	<div class="page-featured-image">
+		<?php 
+			if(is_page_template('page-landing.php')){
+				if(has_post_thumbnail()) {
+		            $image = get_the_post_thumbnail_url();
+		        }
+		        else{
+		            $image = get_template_directory_uri().'/assets/images/default.svg';
+		        } 
+			}
+		?>
+			<img src="<?php echo $image ?>">
 	</div>
 </div>
