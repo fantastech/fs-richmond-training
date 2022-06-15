@@ -58,10 +58,10 @@ add_action('wp_enqueue_scripts', function () {
  */
 function fs_define_post_types_taxonomies()
 {
-    // fs_register_post_type('book', 'Book', 'Books');
-    // fs_register_taxonomy('book_cat', 'Book Category', 'Book Categories', 'book');
 
-    fs_register_post_type('course', 'Course', 'Courses');
+    fs_register_post_type('course', 'Course', 'Courses',['rewrite'=> [ 'slug' => 'courses'],
+        'has_archive' => 'courses'
+    ]);
     fs_register_taxonomy('courses_category', 'Course Tags', 'Course Category', 'course');
 }
 // Uncomment the lines below to add custom post type and taxonomies.
