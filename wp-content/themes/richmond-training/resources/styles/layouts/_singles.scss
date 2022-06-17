@@ -24,8 +24,9 @@
   }
 
   #primary {
-    width: 65%;
+    max-width: 700px;
     padding-right: 0;
+
     @include media-down(mobile) {
       width: 100%;
     }
@@ -49,8 +50,10 @@
   }
 
   #secondary {
-    width: 35%;
-    margin-left: 38px;
+    width: calc(100% - 700px);
+    margin-left: 40px;
+    padding-left: 0 !important;
+
     @include media-down(tablet) {
       width: 100% !important;
       margin-left: 0;
