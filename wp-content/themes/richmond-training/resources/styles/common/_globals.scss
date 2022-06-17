@@ -42,12 +42,15 @@ p:last-child {
 /**
  * Lists
  */
-ul {
-  list-style: $ul-list-style;
-  margin: $ul-margin;
+.primary .entry-content ul {
+  margin: 0 0 20px 50px;
 }
 
 ol {
   list-style: $ol-list-style;
   margin: $ol-margin;
+}
+
+.primary .entry-content .wp-block-separator {
+  margin: 30px 0;
 }
