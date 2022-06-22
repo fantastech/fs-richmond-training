@@ -139,6 +139,13 @@
           padding: 23px 20px;
         }
       }
+
+      .wp-block-buttons {
+        .button-blue {
+          width: 100%;
+        }
+      }
+
       @include media-down(mobile) {
         padding-left: 20px !important;
         padding-right: 20px !important;
